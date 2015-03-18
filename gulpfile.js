@@ -12,6 +12,7 @@
  * $. Setup: Create asset variables
  * $. Setup: Functions
  * $. Task: Compiling Styles
+ * $. Task: Compiling Scripts
  * $. Task: Watch files for changes
  * $. Task: Default
  * 
@@ -23,14 +24,16 @@
 /* $. Setup: Require node packages
 \*----------------------------------------------------------------*/
 
-var gulp = require('gulp'),                             // https://www.npmjs.com/package/gulp
-    sass = require('gulp-sass'),                        // https://www.npmjs.com/package/gulp-sass
-    sourcemaps = require('gulp-sourcemaps'),            // https://www.npmjs.com/package/gulp-sourcemaps
-    autoprefixer = require('gulp-autoprefixer'),        // https://www.npmjs.com/package/gulp-autoprefixer
-    pixrem = require('gulp-pixrem'),                    // https://www.npmjs.com/package/gulp-pixrem
-    livereload = require('gulp-livereload'),            // https://www.npmjs.com/package/gulp-livereload
-    plumber = require('gulp-plumber'),                  // https://www.npmjs.com/package/gulp-plumber
-    notify = require("gulp-notify");                    // https://www.npmjs.com/package/gulp-notify
+var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
+    sass         = require('gulp-sass'),           // https://www.npmjs.com/package/gulp-sass
+    sourcemaps   = require('gulp-sourcemaps'),     // https://www.npmjs.com/package/gulp-sourcemaps
+    autoprefixer = require('gulp-autoprefixer'),   // https://www.npmjs.com/package/gulp-autoprefixer
+    pixrem       = require('gulp-pixrem'),         // https://www.npmjs.com/package/gulp-pixrem
+    jshint       = require('gulp-jshint'),         // https://www.npmjs.com/package/gulp-jshint
+    uglify       = require('gulp-uglify'),         // https://www.npmjs.com/package/gulp-jshint
+    livereload   = require('gulp-livereload'),     // https://www.npmjs.com/package/gulp-livereload
+    plumber      = require('gulp-plumber'),        // https://www.npmjs.com/package/gulp-plumber
+    notify       = require("gulp-notify");         // https://www.npmjs.com/package/gulp-notify
 
 
 
@@ -39,12 +42,13 @@ var gulp = require('gulp'),                             // https://www.npmjs.com
 
 var paths = {
     assets: 'assets/',
-    css: 'assets/css/',
-    scss: 'assets/scss/',
-    js: 'assets/js/',
-    img: 'assets/img/',
-    bower: 'components/'
+    css:    'assets/css/',
+    scss:   'assets/scss/',
+    js:     'assets/js/',
+    img:    'assets/img/',
+    bower:  'components/'
 }
+
 
 
 /* $. Setup: Functions
@@ -107,8 +111,23 @@ gulp.task('styles', function () {
 });
 
 
+
+/* $. Task: Compiling Scripts
+\*----------------------------------------------------------------*/
+
 gulp.task('scripts', function() {
-    gulp.src( [paths.js] + '' )
+
+    // Define source path
+    gulp.src([
+        [paths.js] + '*.js',
+    ])
+
+        // Stop pipeline breaks onError
+        .pipe( plumber({ errorHandler: onError }) )
+        .pipe( jshint() )
+        .pipe( jshint.reporter('default') )
+        .pipe( uglify() )
+        .pipe( gulp.dest([paths.js] + 'min/') )
 });
 
 
