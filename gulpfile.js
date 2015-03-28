@@ -186,7 +186,8 @@ gulp.task('scripts-head', function() {
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch( [paths.scss] + '**/*.scss', ['styles']);
-    gulp.watch( [paths.js] + '*.js', ['scripts'] );
+    gulp.watch( [paths.js] + 'main.js', ['scripts'] );
+    gulp.watch( [paths.js] + 'head.js', ['scripts-head'] );
 });
 
 
