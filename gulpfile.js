@@ -43,16 +43,16 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
 
 var paths = {
     src: {
-        scss: 'assets/src/scss',
-        js: 'assets/src/js',
-        icons: 'assets/src/icons',
+        scss: 'assets/src/scss/',
+        js: 'assets/src/js/',
+        icons: 'assets/src/icons/'
     },
     dist: {
-        css: 'assets/dist/css',
-        js: 'assets/dist/js',
-        img: 'assets/dist/img',
+        css: 'assets/dist/css/',
+        js: 'assets/dist/js/',
+        img: 'assets/dist/img/'
     },
-    bower: 'components/',
+    bower: 'components/'
 }
 
 
@@ -79,7 +79,7 @@ var onError = function(err) {
 gulp.task('styles', function () {
 
     // Define source path
-    return gulp.src( [paths.scss] + '*.scss' )
+    return gulp.src( [paths.src.scss] + '*.scss' )
 
         // Stop pipeline breaks onError
         .pipe(plumber({ errorHandler: onError }))
@@ -103,7 +103,7 @@ gulp.task('styles', function () {
         .pipe(sourcemaps.write( './maps' ))
 
         // Define destination path
-        .pipe(gulp.dest( [paths.css] + '' ))
+        .pipe(gulp.dest( [paths.dist.css] + '' ))
 
         // Call livereload
         .pipe(livereload())
@@ -125,9 +125,8 @@ gulp.task('scripts', function() {
 
     // Define source path
     return gulp.src([
-        [paths.bower]     + 'jquery/dist/jquery.min.js',
-        [paths.grunticon] + 'grunticon.loader.txt',
-        [paths.js]        + 'main.js'
+        [paths.bower] + 'jquery/dist/jquery.min.js',
+        [paths.src.js] + 'main.js'
     ])
 
         // Stop pipeline breaks onError
@@ -140,7 +139,7 @@ gulp.task('scripts', function() {
         .pipe( uglify() )
 
         // Define destination path
-        .pipe( gulp.dest([paths.js] + 'min/') )
+        .pipe( gulp.dest([paths.dist.js] + '') )
 
         // Notify OS with message
         .pipe(notify({
@@ -159,8 +158,8 @@ gulp.task('scripts-head', function() {
 
     // Define source path
     return gulp.src([
-        [paths.js] + 'vendor/modernizr.js',
-        [paths.js] + 'head.js'
+        [paths.src.js] + 'vendor/modernizr.js',
+        [paths.src.js] + 'head.js'
     ])
 
         // Stop pipeline breaks onError
@@ -173,7 +172,7 @@ gulp.task('scripts-head', function() {
         .pipe( uglify() )
 
         // Define destination path
-        .pipe( gulp.dest([paths.js] + 'min/') )
+        .pipe( gulp.dest([paths.dist.js] + '') )
 
         // Notify OS with message
         .pipe(notify({
@@ -189,13 +188,13 @@ gulp.task('scripts-head', function() {
 \*----------------------------------------------------------------*/
 
 // gulp.task('images', function () {
-//     return gulp.src('src/images/*')
+//     return gulp.src('')
 //         .pipe(imagemin({
 //             progressive: true,
 //             svgoPlugins: [{removeViewBox: false}],
 //             use: [pngquant()]
 //         }))
-//         .pipe(gulp.dest('dist/images'));
+//         .pipe(gulp.dest(''));
 // });
 
 
@@ -209,13 +208,13 @@ gulp.task('watch', function () {
     livereload.listen();
 
     // Watch .scss files for changes and run 'styles' task
-    gulp.watch( [paths.scss] + '**/*.scss', ['styles']);
+    gulp.watch( [paths.src.scss] + '**/*.scss', ['styles']);
 
     // Watch main.js files for changes and run 'scripts' task
-    gulp.watch( [paths.js] + 'main.js', ['scripts'] );
+    gulp.watch( [paths.src.js] + 'main.js', ['scripts'] );
 
     // Watch head.js files for changes and run 'scripts-head' task
-    gulp.watch( [paths.js] + 'head.js', ['scripts-head'] );
+    gulp.watch( [paths.src.js] + 'head.js', ['scripts-head'] );
 });
 
 
@@ -224,5 +223,5 @@ gulp.task('watch', function () {
 \*----------------------------------------------------------------*/
 
 gulp.task('default', function() {
-    return gulp.start('styles');
+    return gulp.start('styles', 'scripts', 'scripts-head');
 });
