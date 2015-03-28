@@ -29,7 +29,7 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
     sourcemaps   = require('gulp-sourcemaps'),     // https://www.npmjs.com/package/gulp-sourcemaps
     autoprefixer = require('gulp-autoprefixer'),   // https://www.npmjs.com/package/gulp-autoprefixer
     pixrem       = require('gulp-pixrem'),         // https://www.npmjs.com/package/gulp-pixrem
-    jshint       = require('gulp-jshint'),         // https://www.npmjs.com/package/gulp-jshint
+    concat       = require('gulp-concat');         // https://www.npmjs.com/package/gulp-concat
     uglify       = require('gulp-uglify'),         // https://www.npmjs.com/package/gulp-jshint
     livereload   = require('gulp-livereload'),     // https://www.npmjs.com/package/gulp-livereload
     plumber      = require('gulp-plumber'),        // https://www.npmjs.com/package/gulp-plumber
@@ -41,12 +41,13 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
 \*----------------------------------------------------------------*/
 
 var paths = {
-    assets: 'assets/',
-    css:    'assets/css/',
-    scss:   'assets/scss/',
-    js:     'assets/js/',
-    img:    'assets/img/',
-    bower:  'components/'
+    assets:     'assets/',
+    css:        'assets/css/',
+    scss:       'assets/scss/',
+    js:         'assets/js/',
+    img:        'assets/img/',
+    grunticon:  'assets/grunticon/',
+    bower:      'components/'
 }
 
 
@@ -112,22 +113,69 @@ gulp.task('styles', function () {
 
 
 
-/* $. Task: Compiling Scripts
+/* $. Task: Compiling Scripts - Main
 \*----------------------------------------------------------------*/
 
 gulp.task('scripts', function() {
 
     // Define source path
     gulp.src([
-        [paths.js] + '*.js',
+        [paths.bower]     + 'jquery/dist/jquery.min.js',
+        [paths.grunticon] + 'grunticon.loader.txt',
+        [paths.js]        + 'main.js'
     ])
 
         // Stop pipeline breaks onError
         .pipe( plumber({ errorHandler: onError }) )
-        .pipe( jshint() )
-        .pipe( jshint.reporter('default') )
+
+        // Merge files
+        .pipe(concat('main.js'))
+
+        // Uglify files
         .pipe( uglify() )
+
+        // Define destination path
         .pipe( gulp.dest([paths.js] + 'min/') )
+
+        // Notify OS with message
+        .pipe(notify({
+            title: 'Task finished',
+            message: 'Scripts - Main',
+            onLast: true
+        }));
+});
+
+
+
+/* $. Task: Compiling Scripts - Head
+\*----------------------------------------------------------------*/
+
+gulp.task('scripts-head', function() {
+
+    // Define source path
+    gulp.src([
+        [paths.js] + 'vendor/modernizr.js',
+        [paths.js] + 'head.js'
+    ])
+
+        // Stop pipeline breaks onError
+        .pipe( plumber({ errorHandler: onError }) )
+
+        // Merge files
+        .pipe(concat('head.js'))
+
+        // Uglify files
+        .pipe( uglify() )
+
+        // Define destination path
+        .pipe( gulp.dest([paths.js] + 'min/') )
+
+        // Notify OS with message
+        .pipe(notify({
+            title: 'Task finished',
+            message: 'Scripts - Head',
+            onLast: true
+        }));
 });
 
 
@@ -138,6 +186,7 @@ gulp.task('scripts', function() {
 gulp.task('watch', function () {
     livereload.listen();
     gulp.watch( [paths.scss] + '**/*.scss', ['styles']);
+    gulp.watch( [paths.js] + '*.js', ['scripts'] );
 });
 
 
