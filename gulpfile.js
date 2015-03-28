@@ -29,9 +29,10 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
     sourcemaps   = require('gulp-sourcemaps'),     // https://www.npmjs.com/package/gulp-sourcemaps
     autoprefixer = require('gulp-autoprefixer'),   // https://www.npmjs.com/package/gulp-autoprefixer
     pixrem       = require('gulp-pixrem'),         // https://www.npmjs.com/package/gulp-pixrem
-    concat       = require('gulp-concat');         // https://www.npmjs.com/package/gulp-concat
-    uglify       = require('gulp-uglify'),         // https://www.npmjs.com/package/gulp-jshint
+    uglify       = require('gulp-uglify'),         // https://www.npmjs.com/package/gulp-uglify
+    concat       = require('gulp-concat'),         // https://www.npmjs.com/package/gulp-concat
     livereload   = require('gulp-livereload'),     // https://www.npmjs.com/package/gulp-livereload
+    imagemin     = require('gulp-imagemin'),       // https://www.npmjs.com/package/gulp-imagemin
     plumber      = require('gulp-plumber'),        // https://www.npmjs.com/package/gulp-plumber
     notify       = require("gulp-notify");         // https://www.npmjs.com/package/gulp-notify
 
@@ -74,7 +75,7 @@ var onError = function(err) {
 gulp.task('styles', function () {
 
     // Define source path
-    gulp.src( [paths.scss] + '*.scss' )
+    return gulp.src( [paths.scss] + '*.scss' )
 
         // Stop pipeline breaks onError
         .pipe(plumber({ errorHandler: onError }))
@@ -119,7 +120,7 @@ gulp.task('styles', function () {
 gulp.task('scripts', function() {
 
     // Define source path
-    gulp.src([
+    return gulp.src([
         [paths.bower]     + 'jquery/dist/jquery.min.js',
         [paths.grunticon] + 'grunticon.loader.txt',
         [paths.js]        + 'main.js'
@@ -153,7 +154,7 @@ gulp.task('scripts', function() {
 gulp.task('scripts-head', function() {
 
     // Define source path
-    gulp.src([
+    return gulp.src([
         [paths.js] + 'vendor/modernizr.js',
         [paths.js] + 'head.js'
     ])
@@ -180,13 +181,36 @@ gulp.task('scripts-head', function() {
 
 
 
+/* $. Task: Compiling Scripts - Head
+\*----------------------------------------------------------------*/
+
+// gulp.task('images', function () {
+//     return gulp.src('src/images/*')
+//         .pipe(imagemin({
+//             progressive: true,
+//             svgoPlugins: [{removeViewBox: false}],
+//             use: [pngquant()]
+//         }))
+//         .pipe(gulp.dest('dist/images'));
+// });
+
+
+
 /* $. Task: Watch files for changes
 \*----------------------------------------------------------------*/
 
 gulp.task('watch', function () {
+
+    // Start Livereload
     livereload.listen();
+
+    // Watch .scss files for changes and run 'styles' task
     gulp.watch( [paths.scss] + '**/*.scss', ['styles']);
+
+    // Watch main.js files for changes and run 'scripts' task
     gulp.watch( [paths.js] + 'main.js', ['scripts'] );
+
+    // Watch head.js files for changes and run 'scripts-head' task
     gulp.watch( [paths.js] + 'head.js', ['scripts-head'] );
 });
 
@@ -196,5 +220,5 @@ gulp.task('watch', function () {
 \*----------------------------------------------------------------*/
 
 gulp.task('default', function() {
-    gulp.start('styles');
+    return gulp.start('styles');
 });
