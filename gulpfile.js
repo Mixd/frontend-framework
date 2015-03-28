@@ -42,13 +42,17 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
 \*----------------------------------------------------------------*/
 
 var paths = {
-    assets:     'assets/',
-    css:        'assets/css/',
-    scss:       'assets/scss/',
-    js:         'assets/js/',
-    img:        'assets/img/',
-    grunticon:  'assets/grunticon/',
-    bower:      'components/'
+    src: {
+        scss: 'assets/src/scss',
+        js: 'assets/src/js',
+        icons: 'assets/src/icons',
+    },
+    dist: {
+        css: 'assets/dist/css',
+        js: 'assets/dist/js',
+        img: 'assets/dist/img',
+    },
+    bower: 'components/',
 }
 
 
