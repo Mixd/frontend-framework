@@ -2,13 +2,12 @@
 .DS_Store
 Thumbs.db
 
-# Sass/css
+# Source Folders
 .sass-cache
-
-# Bower
 bower_components
 components
-
-# Node
 /node_modules
 /npm-debug.log
+
+# Distribution Folders
+dist
