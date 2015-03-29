@@ -189,7 +189,14 @@ gulp.task('scripts-head', function() {
 \*----------------------------------------------------------------*/
 
 gulp.task('images', function () {
+
+    // Define source path
     return gulp.src( [paths.src.img] + '**/*' )
+
+        // Stop pipeline breaks onError
+        .pipe( plumber({ errorHandler: onError }) )
+
+        // Optimise image files - .png .jpg .jpeg .gif .svg
         .pipe(imagemin({
             svgoPlugins: [
                 {
@@ -203,7 +210,16 @@ gulp.task('images', function () {
             optimizationLevel: 5,
             interlaced: true
         }))
-        .pipe(gulp.dest( [paths.dist.img] + '' ));
+
+        // Define destination path
+        .pipe(gulp.dest( [paths.dist.img] + '' ))
+
+        // Notify OS with message
+        .pipe(notify({
+            title: 'Task finished',
+            message: 'Images',
+            onLast: true
+        }));
 });
 
 
