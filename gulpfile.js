@@ -45,6 +45,7 @@ var paths = {
     src: {
         scss: 'assets/src/scss/',
         js: 'assets/src/js/',
+        img: 'assets/src/img/',
         icons: 'assets/src/icons/'
     },
     dist: {
@@ -187,15 +188,23 @@ gulp.task('scripts-head', function() {
 /* $. Task: Compiling Scripts - Head
 \*----------------------------------------------------------------*/
 
-// gulp.task('images', function () {
-//     return gulp.src('')
-//         .pipe(imagemin({
-//             progressive: true,
-//             svgoPlugins: [{removeViewBox: false}],
-//             use: [pngquant()]
-//         }))
-//         .pipe(gulp.dest(''));
-// });
+gulp.task('images', function () {
+    return gulp.src( [paths.src.img] + '**/*' )
+        .pipe(imagemin({
+            svgoPlugins: [
+                {
+                    removeViewBox: false
+                },
+                {
+                    removeUselessStrokeAndFill: false
+                }
+            ],
+            progressive: true,
+            optimizationLevel: 5,
+            interlaced: true
+        }))
+        .pipe(gulp.dest( [paths.dist.img] + '' ));
+});
 
 
 
