@@ -31,7 +31,6 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
     pixrem       = require('gulp-pixrem'),         // https://www.npmjs.com/package/gulp-pixrem
     uglify       = require('gulp-uglify'),         // https://www.npmjs.com/package/gulp-uglify
     concat       = require('gulp-concat'),         // https://www.npmjs.com/package/gulp-concat
-    svgsprite    = require('gulp-svg-sprite');     // https://www.npmjs.com/package/gulp-svg-sprite
     livereload   = require('gulp-livereload'),     // https://www.npmjs.com/package/gulp-livereload
     imagemin     = require('gulp-imagemin'),       // https://www.npmjs.com/package/gulp-imagemin
     plumber      = require('gulp-plumber'),        // https://www.npmjs.com/package/gulp-plumber
@@ -231,17 +230,7 @@ gulp.task('images', function () {
 
 gulp.task('sprites', function () {
     return gulp.src( [paths.src.icons] + '**/*' )
-        .pipe(svgsprite(
-            {
-                mode: {
-                    css: {
-                        render: {
-                            css: true,
-                        }
-                    }
-                }
-            }
-        ))
+
         .pipe(gulp.dest( [paths.dist.icons] + '' ));
 });
 
