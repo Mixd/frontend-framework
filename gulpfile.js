@@ -8,8 +8,8 @@
  * 
  * Sections
  * 
- * $. Setup: Require node packages
- * $. Setup: Create asset variables
+ * $. Setup: Required Packages
+ * $. Setup: Variables
  * $. Setup: Functions
  * $. Task: Styles
  * $. Task: Scripts
@@ -23,7 +23,7 @@
 
 
 
-/* $. Setup: Require node packages
+/* $. Setup: Required Packages
 \*----------------------------------------------------------------*/
 
 var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
@@ -41,24 +41,34 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
 
 
 
-/* $. Setup: Create asset variables
+/* $. Setup: Variables
 \*----------------------------------------------------------------*/
 
+// Define base 'assets' directory
+var assets = 'assets/';
+
+// Define 'src/dist' directory based on 'assets' directory
+var base = {
+    src: [assets] + 'src/',
+    dist: [assets] + 'dist/'
+};
+
+// Define paths based on 'src/dist' folders
 var paths = {
     src: {
-        scss: 'assets/src/scss/',
-        js: 'assets/src/js/',
-        img: 'assets/src/img/',
-        icons: 'assets/src/icons/'
+        scss: [base.src] + '/scss/',
+        js: [base.src] + '/js/',
+        img: [base.src] + '/img/',
+        icons: [base.src] + '/icons/'
     },
     dist: {
-        css: 'assets/dist/css/',
-        js: 'assets/dist/js/',
-        img: 'assets/dist/img/',
-        icons: 'assets/dist/icons'
+        css: [base.dist] + '/css/',
+        js: [base.dist] + '/js/',
+        img: [base.dist] + '/img/',
+        icons: [base.dist] + '/icons'
     },
     bower: 'components/'
-}
+};
 
 
 
