@@ -11,11 +11,13 @@
  * $. Setup: Require node packages
  * $. Setup: Create asset variables
  * $. Setup: Functions
- * $. Task: Compiling Styles
- * $. Task: Compiling Scripts
- * $. Task: Watch files for changes
+ * $. Task: Styles
+ * $. Task: Scripts
+ * $. Task: Scripts Head
+ * $. Task: Images
+ * $. Task: Sprites
+ * $. Task: Watch
  * $. Task: Default
- * 
  *
  */
 
@@ -76,7 +78,7 @@ var onError = function(err) {
 
 
 
-/* $. Task: Compiling Styles
+/* $. Task: Styles
 \*----------------------------------------------------------------*/
 
 gulp.task('styles', function () {
@@ -121,7 +123,7 @@ gulp.task('styles', function () {
 
 
 
-/* $. Task: Compiling Scripts - Main
+/* $. Task: Scripts
 \*----------------------------------------------------------------*/
 
 gulp.task('scripts', function() {
@@ -154,7 +156,7 @@ gulp.task('scripts', function() {
 
 
 
-/* $. Task: Compiling Scripts - Head
+/* $. Task: Scripts Head
 \*----------------------------------------------------------------*/
 
 gulp.task('scripts-head', function() {
@@ -187,7 +189,7 @@ gulp.task('scripts-head', function() {
 
 
 
-/* $. Task: Compiling Scripts - Head
+/* $. Task: Images
 \*----------------------------------------------------------------*/
 
 gulp.task('images', function () {
@@ -226,7 +228,7 @@ gulp.task('images', function () {
 
 
 
-/* $. Task: Watch files for changes
+/* $. Task: Sprites
 \*----------------------------------------------------------------*/
 
 gulp.task('sprites', function () {
@@ -243,7 +245,7 @@ gulp.task('sprites', function () {
 
 
 
-/* $. Task: Watch files for changes
+/* $. Task: Watch
 \*----------------------------------------------------------------*/
 
 gulp.task('watch', function () {
