@@ -16,15 +16,15 @@
     <link rel="apple-touch-icon-precomposed" href="/icon.png">
 
     <!--[if IE 9]><!-->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/dist/css/styles.css">
     <!--<![endif]-->
 
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="assets/css/ie.css" media="screen">
+        <link rel="stylesheet" href="assets/dist/css/ie.css" media="screen">
     <![endif]-->
 
-    <noscript><link href="assets/grunticon/icons.fallback.css" rel="stylesheet"></noscript>
+    <noscript><link href="assets/dist/grunticon/icons.fallback.css" rel="stylesheet"></noscript>
 
-    <script src="assets/js/min/head.min.js"></script>
+    <script src="assets/dist/js/min/head.min.js"></script>
 </head>
 <body class="debug">
