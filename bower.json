@@ -2,7 +2,7 @@
   "name": "Mixd-Frontend-Framework",
   "version": "1.2.0",
   "dependencies": {
-    "modernizr": "~2.7.2",
+    "modernizr": "~2.8.3",
     "jquery": "~1.11.3",
     "griddle": "~0.3.0",
     "normalize-scss": "~3.0.1"
