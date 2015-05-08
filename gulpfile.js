@@ -33,7 +33,6 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
     pixrem       = require('gulp-pixrem'),         // https://www.npmjs.com/package/gulp-pixrem
     uglify       = require('gulp-uglify'),         // https://www.npmjs.com/package/gulp-uglify
     concat       = require('gulp-concat'),         // https://www.npmjs.com/package/gulp-concat
-    iconify      = require('gulp-iconify');        // https://www.npmjs.com/package/gulp-iconify
     livereload   = require('gulp-livereload'),     // https://www.npmjs.com/package/gulp-livereload
     imagemin     = require('gulp-imagemin'),       // https://www.npmjs.com/package/gulp-imagemin
     plumber      = require('gulp-plumber'),        // https://www.npmjs.com/package/gulp-plumber
@@ -44,22 +43,28 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
 /* $. Setup: Variables
 \*----------------------------------------------------------------*/
 
-// Define base 'assets' directory
+/**
+ * Define base 'assets' directory
+ */
 var assets = 'assets/';
 
-// Define 'src/dist' directory based on 'assets' directory
+/**
+ * Define 'app/dist' directory based on 'assets' directory
+ */
 var base = {
-    src: [assets] + 'src/',
+    app: [assets] + 'app/',
     dist: [assets] + 'dist/'
 };
 
-// Define paths based on 'src/dist' folders
+/**
+ * Define paths based on 'app/dist' folders
+ */
 var paths = {
-    src: {
-        scss: [base.src] + '/scss/',
-        js: [base.src] + '/js/',
-        img: [base.src] + '/img/',
-        icons: [base.src] + '/icons/'
+    app: {
+        scss: [base.app] + '/scss/',
+        js: [base.app] + '/js/',
+        img: [base.app] + '/img/',
+        icons: [base.app] + '/icons/'
     },
     dist: {
         css: [base.dist] + '/css/',
@@ -75,7 +80,9 @@ var paths = {
 /* $. Setup: Functions
 \*----------------------------------------------------------------*/
 
-// On call, edit/change the 'notify' onError method
+/**
+ * On call, edit/change the 'notify' onError method
+ */
 var onError = function(err) {
     notify.onError({
         title: "Gulp",
@@ -93,37 +100,57 @@ var onError = function(err) {
 
 gulp.task('styles', function () {
 
-    // Define source path
-    return gulp.src( [paths.src.scss] + '*.scss' )
+    /**
+     * Define source path
+     */
+    return gulp.src( [paths.app.scss] + '*.scss' )
 
-        // Stop pipeline breaks onError
+        /**
+         * Stop pipeline breaks onError
+         */
         .pipe(plumber({ errorHandler: onError }))
 
-        // Start source maps module
+        /**
+         * Start source maps module
+         */
         .pipe(sourcemaps.init())
 
-        // Compile scss to css
+        /**
+         * Compile scss to css
+         */
         .pipe(sass({ outputStyle: 'compressed' }))
 
-        // Prefix needed CSS based on http://caniuse.com
+        /**
+         * Prefix needed CSS based on http://caniuse.com
+         */
         .pipe(autoprefixer({
             browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
             cascade: false
         }))
 
-        // Pixel fallback for 'rem'
+        /**
+         * Pixel fallback for 'rem'
+         */
         .pipe(pixrem('1em'))
 
-        // Create Source Maps
+        /**
+         * Create Source Maps
+         */
         .pipe(sourcemaps.write( './maps' ))
 
-        // Define destination path
+        /**
+         * Define destination path
+         */
         .pipe(gulp.dest( [paths.dist.css] + '' ))
 
-        // Call livereload
+        /**
+         * Call livereload
+         */
         .pipe(livereload())
 
-        // Notify OS with message
+        /**
+         * Notify OS with message
+         */
         .pipe(notify({
             title: 'Task finished',
             message: 'Styles',
@@ -138,25 +165,37 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function() {
 
-    // Define source path
+    /**
+     * Define source path
+     */
     return gulp.src([
         [paths.bower] + 'jquery/dist/jquery.min.js',
-        [paths.src.js] + 'main.js'
+        [paths.app.js] + 'main.js'
     ])
 
-        // Stop pipeline breaks onError
+        /**
+         * Stop pipeline breaks onError
+         */
         .pipe( plumber({ errorHandler: onError }) )
 
-        // Merge files
+        /**
+         * Merge files
+         */
         .pipe(concat('main.js'))
 
-        // Uglify files
+        /**
+         * Uglify files
+         */
         .pipe( uglify() )
 
-        // Define destination path
+        /**
+         * Define destination path
+         */
         .pipe( gulp.dest([paths.dist.js] + '') )
 
-        // Notify OS with message
+        /**
+         * Notify OS with message
+         */
         .pipe(notify({
             title: 'Task finished',
             message: 'Scripts - Main',
@@ -171,25 +210,35 @@ gulp.task('scripts', function() {
 
 gulp.task('scripts-head', function() {
 
-    // Define source path
+    /**
+     * Define source path
+     */
     return gulp.src([
-        [paths.src.js] + 'vendor/modernizr.js',
-        [paths.src.js] + 'head.js'
+        [paths.app.js] + 'vendor/modernizr.js',
+        [paths.app.js] + 'head.js'
     ])
 
-        // Stop pipeline breaks onError
+        /**
+         * Stop pipeline breaks onError
+         */
         .pipe( plumber({ errorHandler: onError }) )
 
-        // Merge files
+        /**
+         * Merge files
+         */
         .pipe(concat('head.js'))
 
-        // Uglify files
+        /**
+         * Uglify files
+         */
         .pipe( uglify() )
 
         // Define destination path
         .pipe( gulp.dest([paths.dist.js] + '') )
 
-        // Notify OS with message
+        /**
+         * Notify OS with message
+         */
         .pipe(notify({
             title: 'Task finished',
             message: 'Scripts - Head',
@@ -204,13 +253,19 @@ gulp.task('scripts-head', function() {
 
 gulp.task('images', function () {
 
-    // Define source path
-    return gulp.src( [paths.src.img] + '**/*' )
+    /**
+     * Define source path
+     */
+    return gulp.src( [paths.app.img] + '**/*' )
 
-        // Stop pipeline breaks onError
+        /**
+         * Stop pipeline breaks onError
+         */
         .pipe( plumber({ errorHandler: onError }) )
 
-        // Optimise image files - .png .jpg .jpeg .gif .svg
+        /**
+         * Optimise image files - .png .jpg .jpeg .gif .svg
+         */
         .pipe(imagemin({
             svgoPlugins: [
                 {
@@ -225,10 +280,14 @@ gulp.task('images', function () {
             interlaced: true
         }))
 
-        // Define destination path
+        /**
+         * Define destination path
+         */
         .pipe(gulp.dest( [paths.dist.img] + '' ))
 
-        // Notify OS with message
+        /**
+         * Notify OS with message
+         */
         .pipe(notify({
             title: 'Task finished',
             message: 'Images',
@@ -242,15 +301,7 @@ gulp.task('images', function () {
 \*----------------------------------------------------------------*/
 
 gulp.task('sprites', function () {
-    iconify({
-        src: [paths.src.icons] + '**/*.svg',
-        styleTemplate: [paths.src.icons] + '/_icon_gen.scss.mustache',
-        pngOutput: [paths.dist.icons] + '/png/',
-        cssOutput:  [paths.dist.icons] + '',
-        svgoOptions: {
-            enabled: false
-        }
-    });
+
 });
 
 
@@ -260,17 +311,25 @@ gulp.task('sprites', function () {
 
 gulp.task('watch', function () {
 
-    // Start Livereload
+    /**
+     * Start Livereload
+     */
     livereload.listen();
 
-    // Watch .scss files for changes and run 'styles' task
-    gulp.watch( [paths.src.scss] + '**/*.scss', ['styles']);
+    /**
+     * Watch .scss files for changes and run 'styles' task
+     */
+    gulp.watch( [paths.app.scss] + '**/*.scss', ['styles']);
 
-    // Watch main.js files for changes and run 'scripts' task
-    gulp.watch( [paths.src.js] + 'main.js', ['scripts'] );
+    /**
+     * Watch main.js files for changes and run 'scripts' task
+     */
+    gulp.watch( [paths.app.js] + 'main.js', ['scripts'] );
 
-    // Watch head.js files for changes and run 'scripts-head' task
-    gulp.watch( [paths.src.js] + 'head.js', ['scripts-head'] );
+    /**
+     * Watch head.js files for changes and run 'scripts-head' task
+     */
+    gulp.watch( [paths.app.js] + 'head.js', ['scripts-head'] );
 });
 
 
