@@ -35,6 +35,8 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
     concat       = require('gulp-concat'),         // https://www.npmjs.com/package/gulp-concat
     livereload   = require('gulp-livereload'),     // https://www.npmjs.com/package/gulp-livereload
     imagemin     = require('gulp-imagemin'),       // https://www.npmjs.com/package/gulp-imagemin
+    svgmin       = require('gulp-svgmin'),         // https://www.npmjs.com/package/gulp-svgmin
+    svgstore     = require('gulp-svgstore'),       // https://www.npmjs.com/package/gulp-svgstore
     plumber      = require('gulp-plumber'),        // https://www.npmjs.com/package/gulp-plumber
     notify       = require("gulp-notify");         // https://www.npmjs.com/package/gulp-notify
 
@@ -308,9 +310,15 @@ gulp.task('sprites', function () {
     return gulp.src( [paths.app.icons] + '**/*.svg' )
 
         /**
-         * Configure SVG sprite task
+         * Minify icons
          */
+        .pipe(svgmin())
 
+
+        /**
+         * Combine icons into <defs> block
+         */
+        .pipe(svgstore())
 
         /**
          * Define destination path

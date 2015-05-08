@@ -28,3 +28,5 @@
     <script src="assets/dist/js/min/head.min.js"></script>
 </head>
 <body class="debug">
+
+<?php include("assets/dist/icons/icons.svg"); ?>
