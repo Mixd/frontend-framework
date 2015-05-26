@@ -356,6 +356,11 @@ gulp.task('watch', function () {
      * Watch head.js files for changes and run 'scripts-head' task
      */
     gulp.watch( [paths.app.js] + 'head.js', ['scripts-head'] );
+
+    /**
+     * Watch head.js files for changes and run 'scripts-head' task
+     */
+    gulp.watch( [paths.app.icons] + '**/*.svg', ['sprites'] );
 });
 
 
@@ -368,5 +373,5 @@ gulp.task('default', function() {
     /**
      * Call tasks to be run on 'gulp' or 'gulp start'
      */
-    return gulp.start('styles', 'scripts', 'scripts-head');
+    return gulp.start('styles', 'scripts', 'scripts-head', 'sprites');
 });
