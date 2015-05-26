@@ -15,6 +15,7 @@
     "gulp-sass": "~2.0.1",
     "gulp-sourcemaps": "~1.5.0",
     "gulp-svg-symbols": "^0.3.1",
+    "gulp-svgmin": "^1.1.2",
     "gulp-uglify": "~1.1.0"
   }
 }

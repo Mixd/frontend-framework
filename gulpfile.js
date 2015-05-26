@@ -8,22 +8,22 @@
  * 
  * Sections
  * 
- * $. Setup: Required Packages
- * $. Setup: Variables
- * $. Setup: Functions
- * $. Task: Styles
- * $. Task: Scripts
- * $. Task: Scripts Head
- * $. Task: Images
- * $. Task: Sprites
- * $. Task: Watch
- * $. Task: Default
+ * $. Required Packages
+ * $. Variables
+ * $. Functions
+ * $. Styles
+ * $. Scripts
+ * $. Scripts Head
+ * $. Images
+ * $. Sprites
+ * $. Watch
+ * $. Default
  *
  */
 
 
 
-/* $. Setup: Required Packages
+/* $. Required Packages
 \*----------------------------------------------------------------*/
 
 var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
@@ -41,7 +41,7 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
 
 
 
-/* $. Setup: Variables
+/* $. Variables
 \*----------------------------------------------------------------*/
 
 /**
@@ -78,7 +78,7 @@ var paths = {
 
 
 
-/* $. Setup: Functions
+/* $. Functions
 \*----------------------------------------------------------------*/
 
 /**
@@ -96,7 +96,7 @@ var onError = function(err) {
 
 
 
-/* $. Task: Styles
+/* $. Styles
 \*----------------------------------------------------------------*/
 
 gulp.task('styles', function () {
@@ -161,7 +161,7 @@ gulp.task('styles', function () {
 
 
 
-/* $. Task: Scripts
+/* $. Scripts
 \*----------------------------------------------------------------*/
 
 gulp.task('scripts', function() {
@@ -170,7 +170,6 @@ gulp.task('scripts', function() {
      * Define source path
      */
     return gulp.src([
-        [paths.bower] + 'jquery/dist/jquery.min.js',
         [paths.app.js] + 'main.js'
     ])
 
@@ -206,7 +205,7 @@ gulp.task('scripts', function() {
 
 
 
-/* $. Task: Scripts Head
+/* $. Scripts Head
 \*----------------------------------------------------------------*/
 
 gulp.task('scripts-head', function() {
@@ -249,7 +248,7 @@ gulp.task('scripts-head', function() {
 
 
 
-/* $. Task: Images
+/* $. Images
 \*----------------------------------------------------------------*/
 
 gulp.task('images', function () {
@@ -298,7 +297,7 @@ gulp.task('images', function () {
 
 
 
-/* $. Task: Sprites
+/* $. Sprites
 \*----------------------------------------------------------------*/
 
 gulp.task('sprites', function () {
@@ -309,17 +308,12 @@ gulp.task('sprites', function () {
     return gulp.src( [paths.app.icons] + '**/*.svg' )
 
         /**
-         * Minify icons
+         * Combine icons into <symbols> within one .svg file
          */
         .pipe(svgsymbols({
             className: '.icon--%f',
             title: false
         }))
-
-        /**
-         * Combine icons into <defs> block
-         */
-        //.pipe(svgstore())
 
         /**
          * Define destination path
@@ -338,7 +332,7 @@ gulp.task('sprites', function () {
 
 
 
-/* $. Task: Watch
+/* $. Watch
 \*----------------------------------------------------------------*/
 
 gulp.task('watch', function () {
@@ -366,9 +360,13 @@ gulp.task('watch', function () {
 
 
 
-/* $. Task: Default
+/* $. Default
 \*----------------------------------------------------------------*/
 
 gulp.task('default', function() {
+
+    /**
+     * Call tasks to be run on 'gulp' or 'gulp start'
+     */
     return gulp.start('styles', 'scripts', 'scripts-head');
 });
