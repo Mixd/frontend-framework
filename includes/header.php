@@ -9,7 +9,7 @@
 
     <title>Mixd Front-end Framework</title>
     <meta name="description" content="">
-    <link rel="canonical" href="http://moremountain.com" />
+    <link rel="canonical" href="http://example.com" />
     <link rel="author" href="https://plus.google.com/">
 
     <link rel="shortcut icon" href="/icon.png">
@@ -23,10 +23,8 @@
         <link rel="stylesheet" href="assets/dist/css/ie.css" media="screen">
     <![endif]-->
 
-    <noscript><link href="assets/dist/grunticon/icons.fallback.css" rel="stylesheet"></noscript>
-
-    <script src="assets/dist/js/min/head.min.js"></script>
+    <script src="assets/dist/js/head.js"></script>
 </head>
 <body class="debug">
 
-<?php include("assets/dist/icons/icons.svg"); ?>
+<?php include("assets/dist/icons/svg-symbols.svg"); ?>
