@@ -4,9 +4,6 @@
  ***************************************************************************
  *
  * This file sets up all the Gulp Tasks that are used for this framework.
- *
- * 
- * Sections
  * 
  * $. Required Packages
  * $. Variables
