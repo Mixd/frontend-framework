@@ -24,18 +24,9 @@
 \*----------------------------------------------------------------*/
 
 var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
-    sass         = require('gulp-sass'),           // https://www.npmjs.com/package/gulp-sass
-    postcss      = require('gulp-postcss'),        // https://www.npmjs.com/package/gulp-postcss
-    sourcemaps   = require('gulp-sourcemaps'),     // https://www.npmjs.com/package/gulp-sourcemaps
-    autoprefixer = require('autoprefixer-core'),   // https://www.npmjs.com/package/gulp-autoprefixer
-    pixrem       = require('gulp-pixrem'),         // https://www.npmjs.com/package/gulp-pixrem
-    uglify       = require('gulp-uglify'),         // https://www.npmjs.com/package/gulp-uglify
-    concat       = require('gulp-concat'),         // https://www.npmjs.com/package/gulp-concat
-    livereload   = require('gulp-livereload'),     // https://www.npmjs.com/package/gulp-livereload
-    imageoptim   = require('gulp-imageoptim'),     // https://www.npmjs.com/package/gulp-imagemin
-    svgsymbols   = require('gulp-svg-symbols'),    // https://www.npmjs.com/package/gulp-svg-symbols
-    plumber      = require('gulp-plumber'),        // https://www.npmjs.com/package/gulp-plumber
-    notify       = require("gulp-notify");         // https://www.npmjs.com/package/gulp-notify
+    plugins      = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
+
+var autoprefixer = require('autoprefixer-core');   // https://www.npmjs.com/package/gulp-autoprefixer
 
 
 
@@ -82,7 +73,7 @@ var paths = {
  * On call, edit/change the 'notify' onError method
  */
 var onError = function(err) {
-    notify.onError({
+    plugins.notify.onError({
         title: "Gulp",
         subtitle: "Failure!",
         message: "Error: <%= error.message %>",
@@ -106,23 +97,23 @@ gulp.task('styles', function () {
         /**
          * Stop pipeline breaks onError
          */
-        .pipe( plumber({ errorHandler: onError }) )
+        .pipe( plugins.plumber({ errorHandler: onError }) )
 
         /**
          * Start source maps module
          */
-        .pipe( sourcemaps.init() )
+        .pipe( plugins.sourcemaps.init() )
 
         /**
          * Compile scss to css
          */
-        .pipe( sass({ outputStyle: 'compressed' }) )
+        .pipe( plugins.sass({ outputStyle: 'compressed' }) )
 
         /**
          * Prefix needed CSS based on http://caniuse.com
          */
         .pipe(
-            postcss([
+            plugins.postcss([
                 autoprefixer({
                     browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
                     cascade: false
@@ -133,12 +124,12 @@ gulp.task('styles', function () {
         /**
          * Pixel fallback for 'rem'
          */
-        .pipe( pixrem('1em') )
+        .pipe( plugins.pixrem('1em') )
 
         /**
          * Create Source Maps
          */
-        .pipe( sourcemaps.write( './maps' ) )
+        .pipe( plugins.sourcemaps.write( './maps' ) )
 
         /**
          * Define destination path
@@ -148,13 +139,13 @@ gulp.task('styles', function () {
         /**
          * Call livereload
          */
-        .pipe( livereload() )
+        .pipe( plugins.livereload() )
 
         /**
          * Notify OS with message
          */
         .pipe(
-            notify({
+            plugins.notify({
                 title: 'Task finished',
                 message: 'Styles',
                 onLast: true
@@ -179,17 +170,17 @@ gulp.task('scripts', function() {
         /**
          * Stop pipeline breaks onError
          */
-        .pipe( plumber({ errorHandler: onError }) )
+        .pipe( plugins.plumber({ errorHandler: onError }) )
 
         /**
          * Merge files
          */
-        .pipe( concat('main.js') )
+        .pipe( plugins.concat('main.js') )
 
         /**
          * Uglify files
          */
-        .pipe( uglify() )
+        .pipe( plugins.uglify() )
 
         /**
          * Define destination path
@@ -200,7 +191,7 @@ gulp.task('scripts', function() {
          * Notify OS with message
          */
         .pipe(
-            notify({
+            plugins.notify({
                 title: 'Task finished',
                 message: 'Scripts - Main',
                 onLast: true
@@ -226,17 +217,17 @@ gulp.task('scripts-head', function() {
         /**
          * Stop pipeline breaks onError
          */
-        .pipe( plumber({ errorHandler: onError }) )
+        .pipe( plugins.plumber({ errorHandler: onError }) )
 
         /**
          * Merge files
          */
-        .pipe( concat('head.js') )
+        .pipe( plugins.concat('head.js') )
 
         /**
          * Uglify files
          */
-        .pipe( uglify() )
+        .pipe( plugins.uglify() )
 
         /**
          * Define destination path
@@ -247,7 +238,7 @@ gulp.task('scripts-head', function() {
          * Notify OS with message
          */
         .pipe(
-            notify({
+            plugins.notify({
                 title: 'Task finished',
                 message: 'Scripts - Head',
                 onLast: true
@@ -270,12 +261,12 @@ gulp.task('images', function () {
         /**
          * Stop pipeline breaks onError
          */
-        .pipe( plumber({ errorHandler: onError }) )
+        .pipe( plugins.plumber({ errorHandler: onError }) )
 
         /**
          * Optimise image files - .png .jpg .jpeg .gif .svg
          */
-        .pipe( imageoptim.optimize() )
+        .pipe( plugins.imageoptim.optimize() )
 
         /**
          * Define destination path
@@ -286,7 +277,7 @@ gulp.task('images', function () {
          * Notify OS with message
          */
         .pipe(
-            notify({
+            plugins.notify({
                 title: 'Task finished',
                 message: 'Images',
                 onLast: true
@@ -310,7 +301,7 @@ gulp.task('sprites', function () {
          * Combine icons into <symbols> within one .svg file
          */
         .pipe(
-            svgsymbols({
+            plugins.svgSymbols({
                 className: '.icon--%f',
                 title: false
             })
@@ -325,7 +316,7 @@ gulp.task('sprites', function () {
          * Notify OS with message
          */
         .pipe(
-            notify({
+            plugins.notify({
                 title: 'Task finished',
                 message: 'Sprites',
                 onLast: true
@@ -343,7 +334,7 @@ gulp.task('watch', function () {
     /**
      * Start Livereload
      */
-    livereload.listen();
+    plugins.livereload.listen();
 
     /**
      * Watch .scss files for changes and run 'styles' task
