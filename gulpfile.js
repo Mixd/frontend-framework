@@ -35,7 +35,7 @@ var gulp         = require('gulp'),                // https://www.npmjs.com/pack
     uglify       = require('gulp-uglify'),         // https://www.npmjs.com/package/gulp-uglify
     concat       = require('gulp-concat'),         // https://www.npmjs.com/package/gulp-concat
     livereload   = require('gulp-livereload'),     // https://www.npmjs.com/package/gulp-livereload
-    imagemin     = require('gulp-imagemin'),       // https://www.npmjs.com/package/gulp-imagemin
+    imageoptim   = require('gulp-imageoptim'),     // https://www.npmjs.com/package/gulp-imagemin
     svgsymbols   = require('gulp-svg-symbols'),    // https://www.npmjs.com/package/gulp-svg-symbols
     plumber      = require('gulp-plumber'),        // https://www.npmjs.com/package/gulp-plumber
     notify       = require("gulp-notify");         // https://www.npmjs.com/package/gulp-notify
@@ -65,7 +65,6 @@ var paths = {
     app: {
         scss: [base.app] + '/scss/',
         js: [base.app] + '/js/',
-        img: [base.app] + '/img/',
         icons: [base.app] + '/icons/'
     },
     dist: {
@@ -110,17 +109,17 @@ gulp.task('styles', function () {
         /**
          * Stop pipeline breaks onError
          */
-        .pipe(plumber({ errorHandler: onError }))
+        .pipe( plumber({ errorHandler: onError }) )
 
         /**
          * Start source maps module
          */
-        .pipe(sourcemaps.init())
+        .pipe( sourcemaps.init() )
 
         /**
          * Compile scss to css
          */
-        .pipe(sass({ outputStyle: 'compressed' }))
+        .pipe( sass({ outputStyle: 'compressed' }) )
 
         /**
          * Prefix needed CSS based on http://caniuse.com
@@ -137,31 +136,33 @@ gulp.task('styles', function () {
         /**
          * Pixel fallback for 'rem'
          */
-        .pipe(pixrem('1em'))
+        .pipe( pixrem('1em') )
 
         /**
          * Create Source Maps
          */
-        .pipe(sourcemaps.write( './maps' ))
+        .pipe( sourcemaps.write( './maps' ) )
 
         /**
          * Define destination path
          */
-        .pipe(gulp.dest( [paths.dist.css] + '' ))
+        .pipe( gulp.dest( [paths.dist.css] + '' ) )
 
         /**
          * Call livereload
          */
-        .pipe(livereload())
+        .pipe( livereload() )
 
         /**
          * Notify OS with message
          */
-        .pipe(notify({
-            title: 'Task finished',
-            message: 'Styles',
-            onLast: true
-        }));
+        .pipe(
+            notify({
+                title: 'Task finished',
+                message: 'Styles',
+                onLast: true
+            })
+        );
 });
 
 
@@ -186,7 +187,7 @@ gulp.task('scripts', function() {
         /**
          * Merge files
          */
-        .pipe(concat('main.js'))
+        .pipe( concat('main.js') )
 
         /**
          * Uglify files
@@ -201,11 +202,13 @@ gulp.task('scripts', function() {
         /**
          * Notify OS with message
          */
-        .pipe(notify({
-            title: 'Task finished',
-            message: 'Scripts - Main',
-            onLast: true
-        }));
+        .pipe(
+            notify({
+                title: 'Task finished',
+                message: 'Scripts - Main',
+                onLast: true
+            })
+        );
 });
 
 
@@ -231,7 +234,7 @@ gulp.task('scripts-head', function() {
         /**
          * Merge files
          */
-        .pipe(concat('head.js'))
+        .pipe( concat('head.js') )
 
         /**
          * Uglify files
@@ -246,11 +249,13 @@ gulp.task('scripts-head', function() {
         /**
          * Notify OS with message
          */
-        .pipe(notify({
-            title: 'Task finished',
-            message: 'Scripts - Head',
-            onLast: true
-        }));
+        .pipe(
+            notify({
+                title: 'Task finished',
+                message: 'Scripts - Head',
+                onLast: true
+            })
+        );
 });
 
 
@@ -263,7 +268,7 @@ gulp.task('images', function () {
     /**
      * Define source path
      */
-    return gulp.src( [paths.app.img] + '**/*' )
+    return gulp.src( [paths.dist.img] + '**/*' )
 
         /**
          * Stop pipeline breaks onError
@@ -273,33 +278,23 @@ gulp.task('images', function () {
         /**
          * Optimise image files - .png .jpg .jpeg .gif .svg
          */
-        .pipe(imagemin({
-            svgoPlugins: [
-                {
-                    removeViewBox: false
-                },
-                {
-                    removeUselessStrokeAndFill: false
-                }
-            ],
-            progressive: true,
-            optimizationLevel: 5,
-            interlaced: true
-        }))
+        .pipe( imageoptim.optimize() )
 
         /**
          * Define destination path
          */
-        .pipe(gulp.dest( [paths.dist.img] + '' ))
+        .pipe( gulp.dest( [paths.dist.img] + '' ) )
 
         /**
          * Notify OS with message
          */
-        .pipe(notify({
-            title: 'Task finished',
-            message: 'Images',
-            onLast: true
-        }));
+        .pipe(
+            notify({
+                title: 'Task finished',
+                message: 'Images',
+                onLast: true
+            })
+        );
 });
 
 
@@ -317,24 +312,28 @@ gulp.task('sprites', function () {
         /**
          * Combine icons into <symbols> within one .svg file
          */
-        .pipe(svgsymbols({
-            className: '.icon--%f',
-            title: false
-        }))
+        .pipe(
+            svgsymbols({
+                className: '.icon--%f',
+                title: false
+            })
+        )
 
         /**
          * Define destination path
          */
-        .pipe(gulp.dest( [paths.dist.icons] + '' ))
+        .pipe( gulp.dest( [paths.dist.icons] + '' ) )
 
         /**
          * Notify OS with message
          */
-        .pipe(notify({
-            title: 'Task finished',
-            message: 'Sprites',
-            onLast: true
-        }));
+        .pipe(
+            notify({
+                title: 'Task finished',
+                message: 'Sprites',
+                onLast: true
+            })
+        );
 });
 
 
@@ -352,7 +351,7 @@ gulp.task('watch', function () {
     /**
      * Watch .scss files for changes and run 'styles' task
      */
-    gulp.watch( [paths.app.scss] + '**/*.scss', ['styles']);
+    gulp.watch( [paths.app.scss] + '**/*.scss', ['styles'] );
 
     /**
      * Watch main.js files for changes and run 'scripts' task
@@ -380,5 +379,5 @@ gulp.task('default', function() {
     /**
      * Call tasks to be run on 'gulp' or 'gulp start'
      */
-    return gulp.start('styles', 'scripts', 'scripts-head', 'sprites');
+    return gulp.start( 'styles', 'scripts', 'scripts-head', 'sprites' );
 });

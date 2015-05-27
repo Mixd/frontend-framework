@@ -24,7 +24,7 @@
     "autoprefixer-core": "^5.2.0",
     "gulp": "~3.8.11",
     "gulp-concat": "~2.5.2",
-    "gulp-imagemin": "~2.2.1",
+    "gulp-imageoptim": "^0.2.11",
     "gulp-livereload": "~3.8.0",
     "gulp-notify": "~2.2.0",
     "gulp-pixrem": "~0.2.3",
