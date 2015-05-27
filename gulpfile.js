@@ -238,7 +238,9 @@ gulp.task('scripts-head', function() {
          */
         .pipe( uglify() )
 
-        // Define destination path
+        /**
+         * Define destination path
+         */
         .pipe( gulp.dest([paths.dist.js] + '') )
 
         /**
