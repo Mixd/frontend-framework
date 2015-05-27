@@ -1,8 +1,25 @@
 {
   "name": "Mixd-Frontend-Framework",
   "version": "2.0.0",
-  "homepage": "https://github.com/Mixd/frontend-framework",
-  "repository": "Mixd/frontend-framework",
+  "description": "A front-end framework used as the basis for projects by Mixd",
+  "author": "The Mixd Team <info@mixd.co.uk>",
+  "contributors": [
+    {
+        "name": "Luke Whitehouse",
+        "email": "l.whitehouse@mixd.co.uk"
+    },
+    {
+        "name": "Aaron Thomas",
+        "email": "a.thomas@mixd.co.uk"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mixd/frontend-framework"
+  },
+  "bugs": {
+    "url": "https://github.com/mixd/frontend-framework/issues"
+  },
   "devDependencies": {
     "gulp": "~3.8.11",
     "gulp-autoprefixer": "~2.1.0",
@@ -17,5 +34,6 @@
     "gulp-svg-symbols": "^0.3.1",
     "gulp-svgmin": "^1.1.2",
     "gulp-uglify": "~1.1.0"
-  }
+  },
+  "license": "MIT"
 }
