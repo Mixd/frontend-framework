@@ -28,8 +28,9 @@
 
 var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
     sass         = require('gulp-sass'),           // https://www.npmjs.com/package/gulp-sass
+    postcss      = require('gulp-postcss'),        // https://www.npmjs.com/package/gulp-postcss
     sourcemaps   = require('gulp-sourcemaps'),     // https://www.npmjs.com/package/gulp-sourcemaps
-    autoprefixer = require('gulp-autoprefixer'),   // https://www.npmjs.com/package/gulp-autoprefixer
+    autoprefixer = require('autoprefixer-core'),   // https://www.npmjs.com/package/gulp-autoprefixer
     pixrem       = require('gulp-pixrem'),         // https://www.npmjs.com/package/gulp-pixrem
     uglify       = require('gulp-uglify'),         // https://www.npmjs.com/package/gulp-uglify
     concat       = require('gulp-concat'),         // https://www.npmjs.com/package/gulp-concat
@@ -124,10 +125,14 @@ gulp.task('styles', function () {
         /**
          * Prefix needed CSS based on http://caniuse.com
          */
-        .pipe(autoprefixer({
-            browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
-            cascade: false
-        }))
+        .pipe(
+            postcss([
+                autoprefixer({
+                    browsers: ['last 2 versions', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'],
+                    cascade: false
+                })
+            ])
+        )
 
         /**
          * Pixel fallback for 'rem'
