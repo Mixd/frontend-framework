@@ -25,7 +25,8 @@
 
 var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
     plugins      = require('gulp-load-plugins')(), // https://www.npmjs.com/package/gulp-load-plugins
-    autoprefixer = require('autoprefixer-core');   // https://www.npmjs.com/package/gulp-autoprefixer
+    autoprefixer = require('autoprefixer-core'),   // https://www.npmjs.com/package/gulp-autoprefixer
+    del          = require('del');
 
 
 
@@ -71,7 +72,7 @@ var paths = {
 /**
  * On call, edit/change the 'notify' onError method
  */
-var onError = function(err) {
+var onError = function( err ) {
     plugins.notify.onError({
         title: "Gulp",
         subtitle: "Failure!",
@@ -157,7 +158,7 @@ gulp.task('styles', function () {
 /* $. Scripts
 \*----------------------------------------------------------------*/
 
-gulp.task('scripts', function() {
+gulp.task('scripts', function () {
 
     /**
      * Define source path
@@ -203,7 +204,7 @@ gulp.task('scripts', function() {
 /* $. Scripts Head
 \*----------------------------------------------------------------*/
 
-gulp.task('scripts-head', function() {
+gulp.task('scripts-head', function () {
 
     /**
      * Define source path
@@ -347,6 +348,15 @@ gulp.task('sprites', ['svg2png'], function () {
 
 
 
+/* $. Clear
+\*----------------------------------------------------------------*/
+
+gulp.task('clear', function (cb) {
+    del( [paths.dist + '**/*'], cb );
+});
+
+
+
 /* $. Watch
 \*----------------------------------------------------------------*/
 
@@ -383,7 +393,7 @@ gulp.task('watch', function () {
 /* $. Default
 \*----------------------------------------------------------------*/
 
-gulp.task('default', function() {
+gulp.task('default', ['clear'], function () {
 
     /**
      * Call tasks to be run on 'gulp' or 'gulp start'
