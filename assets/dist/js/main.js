@@ -1,1 +1,1 @@
-!function(){}(jQuery);
+!function(n){n("svg use").each(function(){var e=n(this).attr("xlink:href");console.log(e)})}(jQuery);

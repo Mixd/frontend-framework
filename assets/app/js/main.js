@@ -18,5 +18,10 @@
 (function($) {
 
     // Start your scripts here (with jQuery)
+    $('svg use').each( function () {
+        var svgId = $(this).attr('xlink:href');
+
+        console.log(svgId);
+    });
 
 })(jQuery);
