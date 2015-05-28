@@ -20,10 +20,3 @@
     // Start your scripts here (with jQuery)
 
 })(jQuery);
-
-
-
-/* $. Grunticon Load
-\*----------------------------------------------------------------*/
-
-grunticon([ "assets/grunticon/icons.data.svg.css", "assets/grunticon/icons.data.png.css", "assets/grunticon/icons.fallback.css" ]);

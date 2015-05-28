@@ -1,1 +1,1 @@
-!function(){}(jQuery),grunticon(["assets/grunticon/icons.data.svg.css","assets/grunticon/icons.data.png.css","assets/grunticon/icons.fallback.css"]);
+!function(){}(jQuery);
