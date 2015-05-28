@@ -352,7 +352,12 @@ gulp.task('sprites', ['svg2png'], function () {
 \*----------------------------------------------------------------*/
 
 gulp.task('clear', function (cb) {
-    del( [paths.dist + '**/*'], cb );
+    del([
+        paths.dist.css + '**/*',
+        paths.dist.js + '**/*',
+        paths.dist.icons + '**/*',
+        paths.dist.img + '**/*'
+    ], cb);
 });
 
 
