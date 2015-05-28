@@ -26,6 +26,7 @@
     "gulp-concat": "~2.5.2",
     "gulp-imageoptim": "^0.2.11",
     "gulp-livereload": "~3.8.0",
+    "gulp-load-plugins": "^0.10.0",
     "gulp-notify": "~2.2.0",
     "gulp-pixrem": "~0.2.3",
     "gulp-plumber": "~1.0.0",
