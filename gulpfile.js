@@ -285,11 +285,33 @@ gulp.task('images', function () {
 });
 
 
+/* $. SVG Fallbacks
+\*----------------------------------------------------------------*/
+
+gulp.task('svg2png', function () {
+
+    /**
+     * Define source path
+     */
+    return gulp.src( [paths.app.icons] + '**/*.svg' )
+
+        /**
+         * Create PNG fallback for all SVGs
+         */
+        .pipe( plugins.svg2png() )
+
+        /**
+         * Define destination path
+         */
+        .pipe( gulp.dest( [paths.dist.icons] + '/png/' ) )
+});
+
+
 
 /* $. Sprites
 \*----------------------------------------------------------------*/
 
-gulp.task('sprites', function () {
+gulp.task('sprites', ['svg2png'], function () {
 
     /**
      * Define source path
