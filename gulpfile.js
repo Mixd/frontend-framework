@@ -24,9 +24,8 @@
 \*----------------------------------------------------------------*/
 
 var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
-    plugins      = require('gulp-load-plugins')(); // https://www.npmjs.com/package/gulp-load-plugins
-
-var autoprefixer = require('autoprefixer-core');   // https://www.npmjs.com/package/gulp-autoprefixer
+    plugins      = require('gulp-load-plugins')(), // https://www.npmjs.com/package/gulp-load-plugins
+    autoprefixer = require('autoprefixer-core');   // https://www.npmjs.com/package/gulp-autoprefixer
 
 
 
