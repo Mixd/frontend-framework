@@ -397,4 +397,4 @@ gulp.task('watch', function () {
 /* $. Default
 \*----------------------------------------------------------------*/
 
-gulp.task('default', ['clean', 'styles', 'scripts', 'scripts-head', 'sprites', 'images']);
+gulp.task('default', ['clean', 'scripts', 'scripts-head', 'styles', 'sprites', 'images']);
