@@ -351,7 +351,7 @@ gulp.task('sprites', ['svg2png'], function () {
 /* $. Clear
 \*----------------------------------------------------------------*/
 
-gulp.task('clear', function (cb) {
+gulp.task('clean', function (cb) {
     del([
         paths.dist.css + '**/*',
         paths.dist.js + '**/*',
@@ -398,10 +398,4 @@ gulp.task('watch', function () {
 /* $. Default
 \*----------------------------------------------------------------*/
 
-gulp.task('default', ['clear'], function () {
-
-    /**
-     * Call tasks to be run on 'gulp' or 'gulp start'
-     */
-    return gulp.start( 'styles', 'scripts', 'scripts-head', 'sprites' );
-});
+gulp.task('default', ['clean', 'styles', 'scripts', 'scripts-head', 'sprites', 'images']);
