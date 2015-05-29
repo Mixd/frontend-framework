@@ -356,7 +356,6 @@ gulp.task('clean', function (cb) {
         paths.dist.css + '**/*',
         paths.dist.js + '**/*',
         paths.dist.icons + '**/*',
-        paths.dist.img + '**/*'
     ], cb);
 });
 
