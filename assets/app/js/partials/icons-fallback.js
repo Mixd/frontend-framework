@@ -5,8 +5,12 @@ function supportsSvg() {
     return (div.firstChild && div.firstChild.namespaceURI) == 'http://www.w3.org/2000/svg';
 };
 
-// Scope everything into a SIAF
-(function(){
+/**
+ * iconsFallback - Transform SVGs to PNGs when not supported
+ * 
+ * @param  string - excludeClass - Name of exclusion class
+ */
+function iconsFallback(excludeClass) {
 
     // If browser doesn't support Inline SVG
     if ( !supportsSvg() ) {
@@ -23,24 +27,18 @@ function supportsSvg() {
 
             // Check if browser supports indexOf() function
             if ('indexOf' in Array.prototype) {
+                console.log('index of');
 
                 // use native indexOf
-                checkSvgClass = svgs[svgL].className.baseVal.indexOf('nopng');
+                checkSvgClass = svgs[svgL].className.baseVal.indexOf(excludeClass);
+                console.log(checkSvgClass);
             } else {
+                console.log('no index of');
 
-                // create custom indexOf fallback function
-                function indexOfFallback(elem, find, i) {
-                    if (i===undefined) i= 0;
-                    if (i<0) i+= this.length;
-                    if (i<0) i= 0;
-                    for (var n= this.length; i<n; i++)
-                        if (i in this && this[i]===find)
-                            return i;
-                    return -1;
-                };
-
-                // use fallback
-                checkSvgClass = indexOfFallback(svgs[svgL].className.baseVal, 'nopng');
+                var classes = svgs[svgL].className.baseVal;
+                // use fallback - return true/false
+                checkSvgClass = new RegExp(excludeClass).test(clases);
+                console.log(checkSvgClass);
             }
 
             // If SVG doesn't have class, continue ...
@@ -84,5 +82,7 @@ function supportsSvg() {
             }
         }
     }
+};
 
-})();
+// Call fallback function
+iconsFallback('nopng');
