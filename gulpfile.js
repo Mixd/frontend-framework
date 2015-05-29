@@ -164,6 +164,7 @@ gulp.task('scripts', function () {
      * Define source path
      */
     return gulp.src([
+        [paths.app.js] + 'partials/icons-fallback.js',
         [paths.app.js] + 'main.js'
     ])
 
