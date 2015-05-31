@@ -206,7 +206,7 @@ gulp.task('scripts', function () {
 /* $. Scripts Head
 \*----------------------------------------------------------------*/
 
-gulp.task('scripts-head', function () {
+gulp.task('scripts-head', ['modernizr'], function () {
 
     /**
      * Define source path
@@ -367,34 +367,28 @@ gulp.task('modernizr', function() {
 
     var settings = {
         "dest": paths.app.js + 'vendor/modernizr.js',
-        "files" : {
+        "files": {
             "src": [
                 paths.app.js + '**/*.js',
                 paths.app.scss + '**/*.scss'
             ]
         },
         "uglify": true,
-        "options" : [
+        "options": [
             "setClasses",
             "addTest",
-            "html5shiv",
+            "html5printshiv",
             "testProp",
-            "fnBind"
-        ],
-        "cssprefix": 'test--'
+            "fnBind",
+            "html5shiv",
+            "prefixes",
+            "domprefixes",
+            "teststyles",
+            "testprops"
+        ]
     };
 
-    modernizr(settings, function () {
-
-        /**
-         * Notify OS with message
-         */
-        plugins.notify({
-            title: 'Task finished',
-            message: 'Sprites',
-            onLast: true
-        })
-    });
+    modernizr(settings);
 
 });
 
