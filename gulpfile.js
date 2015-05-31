@@ -298,6 +298,11 @@ gulp.task('svg2png', function () {
     return gulp.src( [paths.app.icons] + '**/*.svg' )
 
         /**
+         * Stop pipeline breaks onError
+         */
+        .pipe( plugins.plumber({ errorHandler: onError }) )
+
+        /**
          * Create PNG fallback for all SVGs
          */
         .pipe( plugins.svg2png() )
@@ -319,6 +324,11 @@ gulp.task('sprites', ['svg2png'], function () {
      * Define source path
      */
     return gulp.src( [paths.app.icons] + '**/*.svg' )
+
+        /**
+         * Stop pipeline breaks onError
+         */
+        .pipe( plugins.plumber({ errorHandler: onError }) )
 
         /**
          * Combine icons into <symbols> within one .svg file
