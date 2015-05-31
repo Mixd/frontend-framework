@@ -26,7 +26,8 @@
 var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
     plugins      = require('gulp-load-plugins')(), // https://www.npmjs.com/package/gulp-load-plugins
     autoprefixer = require('autoprefixer-core'),   // https://www.npmjs.com/package/gulp-autoprefixer
-    del          = require('del');
+    del          = require('del'),                 // https://www.npmjs.com/package/del
+    modernizr    = require('customizr');           // https://www.npmjs.com/package/customizr
 
 
 
@@ -51,15 +52,15 @@ var base = {
  */
 var paths = {
     app: {
-        scss: [base.app] + '/scss/',
-        js: [base.app] + '/js/',
-        icons: [base.app] + '/icons/'
+        scss: [base.app] + 'scss/',
+        js: [base.app] + 'js/',
+        icons: [base.app] + 'icons/'
     },
     dist: {
-        css: [base.dist] + '/css/',
-        js: [base.dist] + '/js/',
-        img: [base.dist] + '/img/',
-        icons: [base.dist] + '/icons'
+        css: [base.dist] + 'css/',
+        js: [base.dist] + 'js/',
+        img: [base.dist] + 'img/',
+        icons: [base.dist] + 'icons'
     },
     bower: 'components/'
 };
@@ -359,7 +360,47 @@ gulp.task('sprites', ['svg2png'], function () {
 
 
 
-/* $. Clear
+/* $. Modernizr
+\*----------------------------------------------------------------*/
+
+gulp.task('modernizr', function() {
+
+    var settings = {
+        "dest": paths.app.js + 'vendor/modernizr.js',
+        "files" : {
+            "src": [
+                paths.app.js + '**/*.js',
+                paths.app.scss + '**/*.scss'
+            ]
+        },
+        "uglify": true,
+        "options" : [
+            "setClasses",
+            "addTest",
+            "html5shiv",
+            "testProp",
+            "fnBind"
+        ],
+        "cssprefix": 'test--'
+    };
+
+    modernizr(settings, function () {
+
+        /**
+         * Notify OS with message
+         */
+        plugins.notify({
+            title: 'Task finished',
+            message: 'Sprites',
+            onLast: true
+        })
+    });
+
+});
+
+
+
+/* $. Clean
 \*----------------------------------------------------------------*/
 
 gulp.task('clean', function (cb) {

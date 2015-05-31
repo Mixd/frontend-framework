@@ -7,7 +7,6 @@
  *    the closing </body> tag.
  * Sections:
  *    $. Your Scripts
- *    $. Grunticon Loader
  */
 
 
