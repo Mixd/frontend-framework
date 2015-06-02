@@ -26,10 +26,7 @@ function iconsFallback(excludeClass) {
             var checkSvgClass;
 
             // use fallback - return true/false
-            checkSvgClass = new RegExp(excludeClass + ' ').test(svgs[svgL].className);
-
-            console.log(svgs[svgL].className);
-            console.log(checkSvgClass);
+            checkSvgClass = new RegExp(excludeClass).test(svgs[svgL].className);
 
             // If SVG doesn't have class, continue ...
             if(!checkSvgClass) {
