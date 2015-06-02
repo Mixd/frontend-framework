@@ -1,4 +1,6 @@
-// Test for Inline SVG support
+/**
+ * Test for Inline SVG support
+ */
 function supportsSvg() {
     var div = document.createElement('div');
     div.innerHTML = '<svg/>';
@@ -28,40 +30,36 @@ function iconsFallback(excludeClass) {
             // use fallback - return true/false
             checkSvgClass = new RegExp(excludeClass).test(svgs[svgL].className);
 
-            // If SVG doesn't have class, continue ...
-            if(!checkSvgClass) {
+            // If SVG doesn't have class and isn't the first SVG, continue ...
+            if(!checkSvgClass && svgL > 0) {
 
-                // If this is not the first SVG, continue ...
-                if(svgL > 0) {
+                // Get title attribute of SVG
+                var svgTitle = svgs[svgL].getAttribute("title");
 
-                    // Get title attribute of SVG
-                    var svgTitle = svgs[svgL].getAttribute("title");
+                // Get all <use> elements from each SVG
+                var uses = svgs[svgL].getElementsByTagName("use"),
+                    usesL = uses.length;
 
-                    // Get all <use> elements from each SVG
-                    var uses = svgs[svgL].getElementsByTagName("use"),
-                        usesL = uses.length;
+                // Loop through all <use> elements within an SVG
+                while( usesL-- ) {
 
-                    // Loop through all <use> elements within an SVG
-                    while( usesL-- ) {
+                    // Get the 'xlink:href' attributes
+                    var svgId = uses[usesL].getAttribute("xlink:href");
 
-                        // Get the 'xlink:href' attributes
-                        var svgId = uses[usesL].getAttribute("xlink:href");
+                    // Remove first character from variable (This removes the #)
+                    svgId = svgId.substring(1, svgId.length);
 
-                        // Remove first character from variable (This removes the #)
-                        svgId = svgId.substring(1, svgId.length);
+                    // Create New Image
+                    var newImg = document.createElement("img");
 
-                        // Create New Image
-                        var newImg = document.createElement("img");
+                    // Assign src attribute
+                    newImg.src = "assets/dist/icons/png/" + svgId + ".png";
 
-                        // Assign src attribute
-                        newImg.src = "assets/dist/icons/png/" + svgId + ".png";
+                    // Assign alt attribute
+                    newImg.alt = svgTitle ? svgTitle : '';
 
-                        // Assign alt attribute
-                        newImg.alt = svgTitle ? svgTitle : '';
-
-                        // Insert new element straight after the SVG in question
-                        svgs[svgL].parentNode.insertBefore(newImg, svgs[svgL].nextSibling);
-                    }
+                    // Insert new element straight after the SVG in question
+                    svgs[svgL].parentNode.insertBefore(newImg, svgs[svgL].nextSibling);
                 }
 
                 // Remove all SVG nodes
