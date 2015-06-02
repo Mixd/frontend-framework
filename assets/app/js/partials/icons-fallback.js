@@ -25,24 +25,14 @@ function iconsFallback(excludeClass) {
             // Define class check variable
             var checkSvgClass;
 
-            // Check if browser supports indexOf() function
-            if ('indexOf' in Array.prototype) {
-                console.log('index of');
+            // use fallback - return true/false
+            checkSvgClass = new RegExp(excludeClass + ' ').test(svgs[svgL].className);
 
-                // use native indexOf
-                checkSvgClass = svgs[svgL].className.baseVal.indexOf(excludeClass);
-                console.log(checkSvgClass);
-            } else {
-                console.log('no index of');
-
-                var classes = svgs[svgL].className.baseVal;
-                // use fallback - return true/false
-                checkSvgClass = new RegExp(excludeClass).test(clases);
-                console.log(checkSvgClass);
-            }
+            console.log(svgs[svgL].className);
+            console.log(checkSvgClass);
 
             // If SVG doesn't have class, continue ...
-            if(checkSvgClass < 0) {
+            if(!checkSvgClass) {
 
                 // If this is not the first SVG, continue ...
                 if(svgL > 0) {
