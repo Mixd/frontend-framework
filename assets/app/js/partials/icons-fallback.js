@@ -24,14 +24,8 @@ function iconsFallback(excludeClass) {
         // Loop through all SVGs on the page
         while( svgL-- ) {
 
-            // Define class check variable
-            var checkSvgClass;
-
-            // use fallback - return true/false
-            checkSvgClass = new RegExp(excludeClass).test(svgs[svgL].className);
-
-            // If SVG doesn't have class and isn't the first SVG, continue ...
-            if(!checkSvgClass && svgL > 0) {
+            // If SVG isn't the first one, continue ...
+            if(svgL > 0) {
 
                 // Get title attribute of SVG
                 var svgTitle = svgs[svgL].getAttribute("title");
@@ -70,4 +64,4 @@ function iconsFallback(excludeClass) {
 };
 
 // Call fallback function
-iconsFallback('nopng');
+iconsFallback();
