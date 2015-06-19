@@ -4,7 +4,7 @@
  ***************************************************************************
  *
  * This file sets up all the Gulp Tasks that are used for this framework.
- * 
+ *
  * $. Required Packages
  * $. Variables
  * $. Functions
@@ -26,8 +26,7 @@
 var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
     plugins      = require('gulp-load-plugins')(), // https://www.npmjs.com/package/gulp-load-plugins
     autoprefixer = require('autoprefixer-core'),   // https://www.npmjs.com/package/gulp-autoprefixer
-    del          = require('del'),                 // https://www.npmjs.com/package/del
-    modernizr    = require('customizr');           // https://www.npmjs.com/package/customizr
+    del          = require('del');                 // https://www.npmjs.com/package/del
 
 
 
@@ -206,13 +205,12 @@ gulp.task('scripts', function () {
 /* $. Scripts Head
 \*----------------------------------------------------------------*/
 
-gulp.task('scripts-head', ['modernizr'], function () {
+gulp.task('scripts-head', function () {
 
     /**
      * Define source path
      */
     return gulp.src([
-        [paths.app.js] + 'vendor/modernizr.js',
         [paths.app.js] + 'head.js'
     ])
 
@@ -356,40 +354,6 @@ gulp.task('sprites', ['svg2png'], function () {
                 onLast: true
             })
         );
-});
-
-
-
-/* $. Modernizr
-\*----------------------------------------------------------------*/
-
-gulp.task('modernizr', function() {
-
-    var settings = {
-        "dest": paths.app.js + 'vendor/modernizr.js',
-        "files": {
-            "src": [
-                paths.app.js + '**/*.js',
-                paths.app.scss + '**/*.scss'
-            ]
-        },
-        "uglify": true,
-        "options": [
-            "setClasses",
-            "addTest",
-            "html5printshiv",
-            "testProp",
-            "fnBind",
-            "html5shiv",
-            "prefixes",
-            "domprefixes",
-            "teststyles",
-            "testprops"
-        ]
-    };
-
-    modernizr(settings);
-
 });
 
 

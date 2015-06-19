@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "autoprefixer-core": "^5.2.0",
-    "customizr": "^1.0.0-alpha",
     "del": "^1.2.0",
     "gulp": "^3.9.0",
     "gulp-concat": "~2.5.2",
