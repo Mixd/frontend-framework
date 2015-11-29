@@ -7,10 +7,6 @@
     {
       "name": "Luke Whitehouse",
       "email": "l.whitehouse@mixd.co.uk"
-    },
-    {
-      "name": "Aaron Thomas",
-      "email": "a.thomas@mixd.co.uk"
     }
   ],
   "repository": {
@@ -21,22 +17,22 @@
     "url": "https://github.com/mixd/frontend-framework/issues"
   },
   "devDependencies": {
-    "autoprefixer-core": "^5.2.1",
-    "del": "^1.2.0",
+    "autoprefixer-core": "^6.0.1",
+    "del": "^2.1.0",
     "gulp": "^3.9.0",
-    "gulp-concat": "~2.6.0",
-    "gulp-imageoptim": "^0.2.12",
-    "gulp-livereload": "~3.8.0",
-    "gulp-load-plugins": "^1.0.0-rc",
-    "gulp-notify": "~2.2.0",
-    "gulp-pixrem": "~0.2.3",
-    "gulp-plumber": "~1.0.1",
-    "gulp-postcss": "^5.1.10",
-    "gulp-sass": "~2.0.4",
-    "gulp-sourcemaps": "~1.5.2",
-    "gulp-svg-symbols": "^0.3.1",
+    "gulp-concat": "*",
+    "gulp-imageoptim": "^0.3.3",
+    "gulp-livereload": "*",
+    "gulp-load-plugins": "*",
+    "gulp-notify": "^2.2.0",
+    "gulp-pixrem": "^1.0.0",
+    "gulp-plumber": "*",
+    "gulp-postcss": "^6.0.1",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-svg-symbols": "^1.0.0",
     "gulp-svg2png": "^0.3.0",
-    "gulp-uglify": "~1.2.0"
+    "gulp-uglify": "^1.5.1"
   },
   "license": "MIT"
 }
