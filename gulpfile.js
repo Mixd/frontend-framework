@@ -12,7 +12,6 @@
  * $. Scripts
  * $. Scripts Head
  * $. Images
- * $. Sprites
  * $. Watch
  * $. Default
  *
@@ -25,7 +24,7 @@
 
 var gulp         = require('gulp'),                // https://www.npmjs.com/package/gulp
     $            = require('gulp-load-plugins')(), // https://www.npmjs.com/package/gulp-load-$
-    autoprefixer = require('autoprefixer-core'),   // https://www.npmjs.com/package/gulp-autoprefixer
+    autoprefixer = require('autoprefixer'),        // https://www.npmjs.com/package/gulp-autoprefixer
     del          = require('del');                 // https://www.npmjs.com/package/del
 
 
@@ -287,77 +286,6 @@ gulp.task('images', function () {
 });
 
 
-/* $. SVG Fallbacks
-\*----------------------------------------------------------------*/
-
-gulp.task('svg2png', function () {
-
-    /**
-     * Define source path
-     */
-    return gulp.src( paths.app.icons + '**/*.svg' )
-
-        /**
-         * Stop pipeline breaks onError
-         */
-        .pipe( $.plumber({ errorHandler: onError }) )
-
-        /**
-         * Create PNG fallback for all SVGs
-         */
-        .pipe( $.svg2png() )
-
-        /**
-         * Define destination path
-         */
-        .pipe( gulp.dest( paths.dist.icons + '/png/' ) )
-});
-
-
-
-/* $. Sprites
-\*----------------------------------------------------------------*/
-
-gulp.task('sprites', ['svg2png'], function () {
-
-    /**
-     * Define source path
-     */
-    return gulp.src( paths.app.icons + '**/*.svg' )
-
-        /**
-         * Stop pipeline breaks onError
-         */
-        .pipe( $.plumber({ errorHandler: onError }) )
-
-        /**
-         * Combine icons into <symbols> within one .svg file
-         */
-        .pipe(
-            $.svgSymbols({
-                className: '.icon--%f',
-                title: false
-            })
-        )
-
-        /**
-         * Define destination path
-         */
-        .pipe( gulp.dest( paths.dist.icons + '' ) )
-
-        /**
-         * Notify OS with message
-         */
-        .pipe(
-            $.notify({
-                title: 'Task finished',
-                message: 'Sprites',
-                onLast: true
-            })
-        );
-});
-
-
 
 /* $. Clean
 \*----------------------------------------------------------------*/
@@ -408,4 +336,4 @@ gulp.task('watch', function () {
 /* $. Default
 \*----------------------------------------------------------------*/
 
-gulp.task('default', ['clean', 'scripts', 'scripts-head', 'styles', 'sprites', 'images']);
+gulp.task('default', ['clean', 'scripts', 'scripts-head', 'styles', 'images']);

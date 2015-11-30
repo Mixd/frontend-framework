@@ -17,7 +17,7 @@
     "url": "https://github.com/mixd/frontend-framework/issues"
   },
   "devDependencies": {
-    "autoprefixer-core": "^6.0.1",
+    "autoprefixer": "^6.1.1",
     "del": "^2.1.0",
     "gulp": "^3.9.0",
     "gulp-concat": "*",
@@ -30,8 +30,6 @@
     "gulp-postcss": "^6.0.1",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-svg-symbols": "^1.0.0",
-    "gulp-svg2png": "^0.3.0",
     "gulp-uglify": "^1.5.1"
   },
   "license": "MIT"

@@ -14,31 +14,8 @@
 /* $. Imports
 \*----------------------------------------------------------------*/
 
-@import "../../../components/normalize-scss/normalize.scss";
-@import "../../../components/griddle/griddle.scss";
+//@import "../../../components/normalize-scss/normalize.scss";
 
-
-
-/* $. Griddle Build
-\*----------------------------------------------------------------*/
-
-@include griddle-build(12);
-
-@include respond-min($bp1) {
-    @include griddle-build(12, "--bp1");
-}
-@include respond-min($bp2) {
-    @include griddle-build(12, "--bp2");
-}
-@include respond-min($bp3) {
-    @include griddle-build(12 5, "--bp3");
-}
-@include respond-min($bp4) {
-    @include griddle-build(12 5, "--bp4");
-}
-@include respond-min($bp5) {
-    @include griddle-build(12 5, "--bp5");
-}
 
 
 /* $. Hotfixes
