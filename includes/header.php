@@ -10,8 +10,7 @@
     <title>Mixd Front-end Framework</title>
     <meta name="description" content="">
 
-    <link rel="shortcut icon" href="/icon.png">
-    <link rel="apple-touch-icon-precomposed" href="/icon.png">
+    <!-- For favicons see http://realfavicongenerator.net/ -->
 
     <!--[if IE 9]><!-->
     <link rel="stylesheet" href="assets/dist/css/styles.css">
