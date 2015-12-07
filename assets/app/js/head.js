@@ -1,6 +1,6 @@
 /**
  * Title:
- *    Header Javascript
+ *    Head Javascript
  * Description:
  *    Javascript file which is located in the <head>.
  *    Only to be used for scripts that are needed to be
@@ -11,11 +11,9 @@
 
 
 
-/* $. Your Scripts - To go within the SIAF (Self invoking annonymous function)
-\*----------------------------------------------------------------*/
-
 (function() {
 
-    // Start your scripts here (without jQuery)
+    /* $. Your Scripts - without jQuery
+    \*----------------------------------------------------------------*/
 
 })();

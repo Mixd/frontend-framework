@@ -9,13 +9,9 @@
  *    $. Your Scripts
  */
 
-
-
-/* $. Your Scripts - To go within the SIAF (Self invoking annonymous function)
-\*----------------------------------------------------------------*/
-
 (function($) {
 
-    // Start your scripts here (with jQuery)
+    /* $. Your Scripts - with jQuery
+    \*----------------------------------------------------------------*/
 
 })(jQuery);
