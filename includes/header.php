@@ -26,5 +26,3 @@
     <script src="assets/dist/js/head.js"></script>
 </head>
 <body class="debug">
-
-<?php include("assets/dist/icons/svg-symbols.svg"); ?>
