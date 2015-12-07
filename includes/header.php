@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]><html class="has-no-js ie lt-ie9 " lang="en"><![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="has-no-js " lang="en"><!--<![endif]-->
+<!--[if lt IE 9]><html class="has-no-js ie lt-ie9" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="has-no-js" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="cleartype" content="on">
