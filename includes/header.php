@@ -9,7 +9,6 @@
 
     <title>Mixd Front-end Framework</title>
     <meta name="description" content="">
-    <link rel="canonical" href="http://moremountain.com" />
     <link rel="author" href="https://plus.google.com/">
 
     <link rel="shortcut icon" href="/icon.png">
