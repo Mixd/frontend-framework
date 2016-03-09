@@ -31,14 +31,14 @@
     }
 
     a {
-        color: $color-link;
-        border-bottom: 1px solid $color-link;
-        border-bottom-color: rgba($color-link, .15);
+        color: $color-brand;
+        border-bottom: 1px solid $color-brand;
+        border-bottom-color: rgba($color-brand, .15);
         transition: all .15s ease-out;
 
         &:hover,
         &:focus {
-            border-bottom-color: rgba($color-link, .5);
+            border-bottom-color: rgba($color-brand, .5);
         }
     }
 }

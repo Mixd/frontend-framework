@@ -15,20 +15,21 @@
 \*----------------------------------------------------------------*/
 
 %btn {
+    @include curve();
     display: inline-block;
     padding: ($base/2) $base;
     border: 0;
-    transition: background .15s ease-out;
+    transition: all .15s ease-out;
 }
 
-@mixin btn($text, $bg) {
+@mixin btn( $text, $bg, $htext: $text, $hbg: darken($bg, 10%) ) {
     color: $text;
     background: $bg;
 
     &:hover,
     &:focus {
-        color: $text;
-        background: darken($bg, 10%);
+        color: $htext;
+        background: $hbg;
     }
 }
 
@@ -49,9 +50,48 @@ input[type="submit"],
 /* $. Modifications
 \*----------------------------------------------------------------*/
 
+/**
+ * Themes
+ */
+
 .btn--primary {
-    @include btn(#fff, $color-brand);
+    @include btn($white, $grey);
 }
 
 .btn--secondary {}
-.btn--large {}
+.btn--tertiary {}
+.btn--invert {}
+
+/**
+ * Position and size
+ */
+
+.btn--blocked {
+    width: 100%;
+    text-align: left;
+}
+
+.btn--large {
+    font-size: 1.2rem;
+}
+
+.btn--small {
+    font-size: .8rem;
+}
+
+/**
+ * Icons
+ */
+
+.btn--icon {
+    position: relative;
+    padding-right: $base*2.5;
+
+    .icon          {}
+    .icon--small   {}
+    .icon--medium  {}
+    .icon--large   {}
+    .icon--xlarge  {}
+    .icon--xxlarge {}
+}
+
