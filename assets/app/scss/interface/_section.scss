@@ -1,0 +1,69 @@
+/**
+ * Title:
+ *    Section object
+ * Description:
+ *    Used to visually define a different section. This is to be used as a main object that
+ *    everything sits within.
+ * Sections:
+ *    $. Setup
+ *    $. Base
+ *    $. Elements
+ *    $. Themes
+ *    $. Sizing
+ */
+
+
+
+/* $. Setup
+\*----------------------------------------------------------------*/
+
+/**
+ * Mixin to give colors and backgrounds for your section.
+ *
+ * @param  $text   Colour of the Text
+ * @param  $bg     Colour of the Background
+ */
+@mixin section( $text, $bg ) {
+    color: $text;
+    background-color: $bg;
+}
+
+
+/* $. Base
+\*----------------------------------------------------------------*/
+
+.section {
+    @extend %cf;
+    position: relative;
+    padding: $base 0;
+
+    @include respond-min($bp2) {
+        padding: ($base*2) 0;
+    }
+}
+
+
+/* $. Elements
+\*----------------------------------------------------------------*/
+
+
+
+/* $. Themes
+\*----------------------------------------------------------------*/
+
+
+
+/* $. Sizing
+\*----------------------------------------------------------------*/
+
+.section--small {
+    padding: $base 0;
+}
+
+.section--large {
+    padding: ($base*2) 0 ($base*2) 0;
+
+    @include respond-min($bp2) {
+        padding: ($base*4) 0 ($base*4) 0;
+    }
+}
