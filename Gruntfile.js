@@ -46,7 +46,7 @@ module.exports = function( grunt ) {
                 },
                 files: {
                     '<%= dirs.assets_output %>/js/main.min.js': [
-                        '<%= dirs.assets_input %>/grunticon/grunticon.loader.js',
+                        '<%= dirs.assets_output %>/grunticon/grunticon.loader.js',
                         '<%= dirs.assets_input %>/js/partials/custom-select.js',
                         '<%= dirs.assets_input %>/js/main.js'
                     ],
@@ -147,7 +147,7 @@ module.exports = function( grunt ) {
             icons: {
                 files: [{
                     expand: true,
-                    cwd: '<%= dirs.assets_input %>/img/icons',
+                    cwd: '<%= dirs.assets_input %>/icons',
                     src: [ '*.svg', '*.png' ],
                     dest: "<%= dirs.assets_output %>/grunticon"
                 }],
