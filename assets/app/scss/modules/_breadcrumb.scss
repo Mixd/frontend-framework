@@ -2,46 +2,43 @@
  * Title:
  *    Breadcrumbs
  * Description:
- *    The .breadcrumbs module and its extensions
+ *    Styling the breadcrumbs component.
  * Sections:
- *    $. Setup
- *    $. Component
- *    $. Modifications
+ *    $. Variables
+ *    $. Base
  */
 
 
 
-/* $. Setup
+/* $. Variables
 \*----------------------------------------------------------------*/
 
-// Setup here
+// variables
 
 
 
-/* $. Component
+/* $. Base
 \*----------------------------------------------------------------*/
 
 .breadcrumbs {
-    margin-bottom: $base;
-    font-size: .75rem;
-    text-align: center;
+    position: relative;
+    margin: 0;
+    font-size: .8rem;
 
     @include respond-min($bp3) {
-        text-align: left;
+        padding-top: $base;
+        border-top: ($base/4) solid $grey-lighter;
     }
 
     a {
-        color: $color-brand;
-        border-bottom: 1px solid transparent;
+        color: $color-link;
+        border-bottom: 1px solid $color-link;
+        border-bottom-color: rgba($color-link, .15);
+        transition: all .15s ease-out;
 
-        &:hover, &:focus {
-            border-bottom: 1px solid $color-brand; // fallback
-            border-bottom: 1px solid rgba($color-brand, .5);
+        &:hover,
+        &:focus {
+            border-bottom-color: rgba($color-link, .5);
         }
     }
 }
-
-
-
-/* $. Modifications
-\*----------------------------------------------------------------*/
