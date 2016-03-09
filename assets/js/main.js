@@ -17,7 +17,14 @@
 
 (function($) {
 
-    // Start your scripts here (with jQuery)
+    /**
+     * Setup 'CustomSelect' plugin on all Select elements
+     */
+    if(!$('html').hasClass('ie')) {
+        $("select").each(function() {
+            new CustomSelect($(this));
+        });
+    }
 
 })(jQuery);
 

@@ -46,6 +46,7 @@ module.exports = function( grunt ) {
                 files: {
                     '<%= dirs.assets %>/js/min/main.min.js': [
                         '<%= dirs.assets %>/grunticon/grunticon.loader.js',
+                        '<%= dirs.assets %>/js/partials/custom-select.js',
                         '<%= dirs.assets %>/js/main.js'
                     ],
                     '<%= dirs.assets %>/js/min/head.min.js': [
