@@ -12,8 +12,7 @@
     <title>Mixd Front-end Framework</title>
 
     <!-- Favicons -->
-    <link rel="shortcut icon" href="/icon.png">
-    <link rel="apple-touch-icon-precomposed" href="/icon.png">
+    <?php include('./includes/favicons.php'); ?>
 
     <!-- Styles -->
     <!--[if IE 9]><!-->
