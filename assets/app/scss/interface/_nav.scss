@@ -1,0 +1,68 @@
+/**
+ * Title:
+ *    Navigation
+ * Description:
+ *    The .nav module and its extensions
+ * Sections:
+ *    $. Variables
+ *    $. Container
+ *    $. Component
+ *    $. Primary
+ *    $. Secondary
+ *    $. Tertiary
+ */
+
+
+
+/* $. Variables
+\*----------------------------------------------------------------*/
+
+$color-nav: $color-link;
+
+
+
+/* $. Container
+\*----------------------------------------------------------------*/
+
+.nav-container {
+}
+
+
+
+/* $. Component
+\*----------------------------------------------------------------*/
+
+.nav {
+    @extend %cf;
+    @extend %list--unset;
+}
+
+.nav__item {
+}
+
+.nav__link {
+}
+
+
+
+/* $. Primary
+\*----------------------------------------------------------------*/
+
+.nav--primary {
+}
+
+
+
+/* $. Secondary
+\*----------------------------------------------------------------*/
+
+.nav--secondary {
+}
+
+
+
+/* $. Tertiary
+\*----------------------------------------------------------------*/
+
+.nav--tertiary {
+}
