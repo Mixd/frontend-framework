@@ -49,7 +49,7 @@ module.exports = function( grunt ) {
                         '<%= dirs.assets %>/js/main.js'
                     ],
                     '<%= dirs.assets %>/js/min/head.min.js': [
-                        '<%= dirs.modules %>/js/vendors/jquery.js',
+                        '<%= dirs.modules %>/jquery/dist/jquery.js',
                         '<%= dirs.assets %>/js/vendors/modernizr.js',
                         '<%= dirs.assets %>/js/head.js'
                     ]
