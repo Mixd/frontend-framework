@@ -1,0 +1,27 @@
+.pagination {
+    margin-top: $base*2;
+    padding: ($base/2) 0;
+    font-size: 1.2rem;
+    border-top: 1px solid $grey-lighter;
+    border-bottom: 1px solid $grey-lighter;
+
+    a, span {
+        display: inline-block;
+    }
+
+    a {
+        margin: 0 $base/4;
+        line-height: 1;
+        border-bottom: 1px solid $color-link;
+    }
+
+    .pages {
+        margin-right: $base*2;
+        font-size: .85rem;
+    }
+
+    .first,
+    .last {
+        border-bottom: 0;
+    }
+}
