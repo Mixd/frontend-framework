@@ -1,38 +1,56 @@
 module.exports = function( grunt ) {
 
+    // Only use quiet mode if param entered.
+    if (grunt.option('q') || grunt.option('quiet')) {
+        require('quiet-grunt');
+    }
+
     // Load NPM tasks
+    grunt.loadNpmTasks( 'grunt-notify' );
     grunt.loadNpmTasks( 'grunt-contrib-watch' );
     grunt.loadNpmTasks( 'grunt-contrib-uglify' );
     grunt.loadNpmTasks( 'grunt-pixrem' );
-    grunt.loadNpmTasks( 'grunt-autoprefixer' );
-    grunt.loadNpmTasks( 'grunt-modernizr' );
+    grunt.loadNpmTasks( 'grunt-postcss' );
     grunt.loadNpmTasks( 'grunt-imageoptim' );
     grunt.loadNpmTasks( 'grunt-svgmin' );
     grunt.loadNpmTasks( 'grunt-grunticon' );
     grunt.loadNpmTasks( 'grunt-sass' );
 
-
     // Keep directories in variable for easy changes and CMS integration
     var dirs = {
         assets: 'assets',
-        components: 'components'
+        components: 'components',
+        modules: 'node_modules'
     }
 
     grunt.initConfig({
         pkg: grunt.file.readJSON( 'package.json' ),
         dirs: dirs,
 
+        notify_hooks: {
+            options: {
+                enabled: true,
+                max_jshint_notifications: 3, // maximum number of notifications from jshint output
+                duration: 0.5 // the duration of notification in seconds, for `notify-send only
+            }
+        },
+
         // Uglify [and Minify] Javascript
         uglify: {
             scripts: {
+                options: {
+                    compress: true,
+                    sourceMap: true,
+                    preserveComments: false,
+                },
                 files: {
                     '<%= dirs.assets %>/js/min/main.min.js': [
-                        '<%= dirs.components %>/jquery/dist/jquery.min.js',
-                        '<%= dirs.assets %>/grunticon/grunticon.loader.txt',
+                        '<%= dirs.assets %>/grunticon/grunticon.loader.js',
                         '<%= dirs.assets %>/js/main.js'
                     ],
                     '<%= dirs.assets %>/js/min/head.min.js': [
-                        '<%= dirs.assets %>/js/vendor/modernizr.js',
+                        '<%= dirs.modules %>/js/vendors/jquery.js',
+                        '<%= dirs.assets %>/js/vendors/modernizr.js',
                         '<%= dirs.assets %>/js/head.js'
                     ]
                 }
@@ -45,14 +63,9 @@ module.exports = function( grunt ) {
                 sourceMap: true,
                 outputStyle: 'compressed'
             },
-            dev: {
-                files: {
-                    '<%= dirs.assets %>/css/styles.css': '<%= dirs.assets %>/scss/styles.scss'
-                }
-            },
             dist: {
                 files: {
-                    '<%= dirs.assets %>/css/styles.css': '<%= dirs.assets %>/scss/styles.scss',
+                    '<%= dirs.assets %>/css/style.css': '<%= dirs.assets %>/scss/styles.scss',
                     '<%= dirs.assets %>/css/ie.css': '<%= dirs.assets %>/scss/ie.scss'
                 }
             }
@@ -66,20 +79,29 @@ module.exports = function( grunt ) {
             dist: {
                 files: {
                     '<%= dirs.assets %>/css/styles.css': ['<%= dirs.assets %>/css/styles.css'],
-                    '<%= dirs.assets %>/css/ie.css': ['<%= dirs.assets %>/css/ie.css'],
+                    '<%= dirs.assets %>/css/ie.css': ['<%= dirs.assets %>/css/ie.css']
                 }
             }
         },
 
         // Autoprefix .css files
-        autoprefixer: {
+        postcss: {
             options: {
-                browsers: [ 'last 2 versions', 'ie 8', 'ie 9', 'Firefox ESR', 'Opera 12.1' ]
+                processors: [
+                    require('autoprefixer')({
+                        browsers: [ 'last 2 versions', 'ie 8', 'ie 9', 'Firefox ESR', 'Opera 12.1' ],
+                        remove: false
+                    })
+                ],
+                map: true
             },
-            files: {
+            dist: {
                 expand: true,
                 flatten: true,
-                src: '<%= dirs.assets %>/css/*.css',
+                src: [
+                    '<%= dirs.assets %>/css/styles.css',
+                    '<%= dirs.assets %>/css/ie.css',
+                ],
                 dest: '<%= dirs.assets %>/css'
             }
         },
@@ -130,26 +152,9 @@ module.exports = function( grunt ) {
                     dest: "<%= dirs.assets %>/grunticon"
                 }],
                 options: {
+                    loadersnippet: "grunticon.loader.js",
                     cssprefix: ".icon--"
                 }
-            }
-        },
-
-        // Generate custom Modernizr build
-        modernizr: {
-            dist: {
-                "devFile": "<%= dirs.components %>/modernizr/modernizr.js",
-                "outputFile": "<%= dirs.assets %>/js/vendor/modernizr.js",
-                "extensibility": {
-                    "teststyles": true,
-                    "testprops": true,
-                    "prefixes": true,
-                    "domprefixes": true
-                },
-                "files": {
-                    "src": [ '<%= dirs.assets %>/scss/*.scss' ]
-                },
-                "uglify": false
             }
         },
 
@@ -157,26 +162,40 @@ module.exports = function( grunt ) {
         watch: {
             scripts: {
                 files: [ '<%= dirs.assets %>/js/*.js' ],
-                tasks: [ 'uglify' ],
+                tasks: [ 'uglify', 'notify:uglify' ],
                 options: {
+                    livereload: true,
                     spawn: false
                 }
             },
             css: {
                 files: '<%= dirs.assets %>/scss/**/*.scss',
-                tasks: [ 'sass:dev' ],
+                tasks: [ 'sass:dist', 'pixrem:dist', 'postcss:dist', 'notify:sass' ],
                 options: {
                     livereload: true
                 }
             },
             svg: {
                 files: '<%= dirs.assets %>/img/icons/*.svg',
-                tasks: [ 'svgmin', 'grunticon', 'sass:dev' ],
+                tasks: [ 'svgmin', 'grunticon', 'sass:dist' ],
                 options: {
                     livereload: true
                 }
             }
-        }
+        },
+
+        notify: {
+            uglify: {
+                options: {
+                    message: "Javascript compiled and minified successfully"
+                }
+            },
+            sass: {
+                options: {
+                    message: 'CSS compiled and minified successfully'
+                }
+            }
+        },
     });
 
     // Register above tasks
@@ -188,9 +207,11 @@ module.exports = function( grunt ) {
             'imageoptim',
             'sass:dist',
             'pixrem:dist',
-            'autoprefixer',
-            'modernizr',
+            'postcss',
             'uglify'
         ]
     );
+
+    // This is required if you use any options.
+    grunt.task.run('notify_hooks');
 }

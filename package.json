@@ -1,18 +1,20 @@
 {
   "name": "Mixd-Frontend-Framework",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-autoprefixer": "~0.7.2",
-    "grunt-contrib-sass": "~0.7.3",
-    "grunt-contrib-uglify": "~0.3.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-grunticon": "~1.0.0",
+    "autoprefixer": "~6.3.3",
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "~1.0.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-grunticon": "~1.6.0",
     "grunt-imageoptim": "~1.4.1",
-    "grunt-modernizr": "~0.5.2",
-    "grunt-pixrem": "^0.1.2",
-    "grunt-remfallback": "0.0.5",
-    "grunt-sass": "^0.17.0",
-    "grunt-svgmin": "~0.4.0"
+    "grunt-notify": "~0.4.5",
+    "grunt-pixrem": "~0.1.2",
+    "grunt-postcss": "~0.8.0",
+    "grunt-sass": "~1.1.0",
+    "grunt-svgmin": "~3.1.2",
+    "quiet-grunt": "~0.2.3",
+    "normalize-scss": "~4.0.3",
+    "jquery": "~1.12.1"
   }
 }
