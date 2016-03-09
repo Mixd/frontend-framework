@@ -1,0 +1,91 @@
+/**
+ * Title:
+ *    Panels
+ * Description:
+ *    Used to provide emphasis for a section of content
+ * Sections:
+ *    $. Setup
+ *    $. Component
+ *    $. Themes
+ *    $. Sizing
+ *    $. Grid
+ */
+
+
+
+/* $. Setup
+\*----------------------------------------------------------------*/
+
+/**
+ * Mixin to give colors and backgrounds for your panel.
+ *
+ * @param  $text   Colour of the Text
+ * @param  $bg     Colour of the Background
+ */
+@mixin panel( $text, $bg ) {
+    color: $text;
+    background-color: $bg;
+    transition: background-color .15s ease-out;
+
+    &[href]:hover,
+    &[href]:focus {
+        color: $text;
+        background-color: darken($bg, 5%);
+    }
+}
+
+
+
+/* $. Component
+\*----------------------------------------------------------------*/
+
+.panel {
+    @extend %cf;
+    position: relative;
+    display: block;
+    padding: $base;
+
+    @include respond-min($bp2) {
+        padding: $base*2;
+    }
+}
+
+
+
+/* $. Sizing
+\*----------------------------------------------------------------*/
+
+.panel--large {
+    padding: $base*2;
+
+    @include respond-min($bp2) {
+        padding: $base*4;
+    }
+}
+
+.panel--small {
+    padding: ($base/2);
+
+    @include respond-min($bp2) {
+        padding: $base;
+    }
+}
+
+.panel--slim {
+    padding: $base*.75;
+
+    @include respond-min($bp2) {
+        padding: $base*1.5;
+    }
+}
+
+
+
+/* $. Themes
+\*----------------------------------------------------------------*/
+
+.panel--white   { @include panel($color-text, $white); }
+.panel--grey    { @include panel($color-text, $grey-lighter); }
+
+.panel--success { border-color: $color-success; }
+.panel--error   { border-color: $color-error; }
