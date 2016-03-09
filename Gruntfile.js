@@ -18,7 +18,8 @@ module.exports = function( grunt ) {
 
     // Keep directories in variable for easy changes and CMS integration
     var dirs = {
-        assets: 'assets',
+        assets_input: 'assets/app',
+        assets_output: 'assets/dist',
         components: 'components',
         modules: 'node_modules'
     }
@@ -44,15 +45,15 @@ module.exports = function( grunt ) {
                     preserveComments: false,
                 },
                 files: {
-                    '<%= dirs.assets %>/js/min/main.min.js': [
-                        '<%= dirs.assets %>/grunticon/grunticon.loader.js',
-                        '<%= dirs.assets %>/js/partials/custom-select.js',
-                        '<%= dirs.assets %>/js/main.js'
+                    '<%= dirs.assets_output %>/js/main.min.js': [
+                        '<%= dirs.assets_input %>/grunticon/grunticon.loader.js',
+                        '<%= dirs.assets_input %>/js/partials/custom-select.js',
+                        '<%= dirs.assets_input %>/js/main.js'
                     ],
-                    '<%= dirs.assets %>/js/min/head.min.js': [
+                    '<%= dirs.assets_output %>/js/head.min.js': [
                         '<%= dirs.modules %>/jquery/dist/jquery.js',
-                        '<%= dirs.assets %>/js/vendors/modernizr.js',
-                        '<%= dirs.assets %>/js/head.js'
+                        '<%= dirs.assets_input %>/js/vendors/modernizr.js',
+                        '<%= dirs.assets_input %>/js/head.js'
                     ]
                 }
             }
@@ -66,8 +67,8 @@ module.exports = function( grunt ) {
             },
             dist: {
                 files: {
-                    '<%= dirs.assets %>/css/style.css': '<%= dirs.assets %>/scss/styles.scss',
-                    '<%= dirs.assets %>/css/ie.css': '<%= dirs.assets %>/scss/ie.scss'
+                    '<%= dirs.assets_output %>/css/style.css': '<%= dirs.assets_input %>/scss/styles.scss',
+                    '<%= dirs.assets_output %>/css/ie.css': '<%= dirs.assets_input %>/scss/ie.scss'
                 }
             }
         },
@@ -75,11 +76,11 @@ module.exports = function( grunt ) {
         // Fallback for rem's
         pixrem: {
             options: {
-                rootvalue: '16px'
+                rootvalue: '1em'
             },
             dist: {
-                src: '<%= dirs.assets %>/css/ie.css',
-                dest: '<%= dirs.assets %>/css/ie.css'
+                src: '<%= dirs.assets_output %>/css/ie.css',
+                dest: '<%= dirs.assets_output %>/css/ie.css'
             }
         },
 
@@ -98,16 +99,16 @@ module.exports = function( grunt ) {
                 expand: true,
                 flatten: true,
                 src: [
-                    '<%= dirs.assets %>/css/styles.css',
-                    '<%= dirs.assets %>/css/ie.css',
+                    '<%= dirs.assets_output %>/css/styles.css',
+                    '<%= dirs.assets_output %>/css/ie.css',
                 ],
-                dest: '<%= dirs.assets %>/css'
+                dest: '<%= dirs.assets_output %>/css'
             }
         },
 
         // Optimise Images
         imageoptim: {
-            src: '<%= dirs.assets %>/img',
+            src: '<%= dirs.assets_output %>/img',
             options: {
                 quitAfter: true
             }
@@ -133,9 +134,9 @@ module.exports = function( grunt ) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '<%= dirs.assets %>/img',
+                    cwd: '<%= dirs.assets_input %>/icons',
                     src: [ '**/*.svg' ],
-                    dest: '<%= dirs.assets %>/img',
+                    dest: '<%= dirs.assets_input %>/icons',
                     ext: '.svg'
                 }]
             }
@@ -146,9 +147,9 @@ module.exports = function( grunt ) {
             icons: {
                 files: [{
                     expand: true,
-                    cwd: '<%= dirs.assets %>/img/icons',
+                    cwd: '<%= dirs.assets_input %>/img/icons',
                     src: [ '*.svg', '*.png' ],
-                    dest: "<%= dirs.assets %>/grunticon"
+                    dest: "<%= dirs.assets_output %>/grunticon"
                 }],
                 options: {
                     loadersnippet: "grunticon.loader.js",
@@ -160,7 +161,7 @@ module.exports = function( grunt ) {
         // Watch Task
         watch: {
             scripts: {
-                files: [ '<%= dirs.assets %>/js/*.js' ],
+                files: [ '<%= dirs.assets_input %>/js/*.js' ],
                 tasks: [ 'uglify', 'notify:uglify' ],
                 options: {
                     livereload: true,
@@ -168,14 +169,14 @@ module.exports = function( grunt ) {
                 }
             },
             css: {
-                files: '<%= dirs.assets %>/scss/**/*.scss',
+                files: '<%= dirs.assets_input %>/scss/**/*.scss',
                 tasks: [ 'sass:dist', 'pixrem:dev', 'postcss:dist', 'notify:sass' ],
                 options: {
                     livereload: true
                 }
             },
             svg: {
-                files: '<%= dirs.assets %>/img/icons/*.svg',
+                files: '<%= dirs.assets_input %>/icons/*.svg',
                 tasks: [ 'svgmin', 'grunticon', 'sass:dist' ],
                 options: {
                     livereload: true

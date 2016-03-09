@@ -33,4 +33,4 @@
 /* $. Grunticon Load
 \*----------------------------------------------------------------*/
 
-grunticon([ "assets/grunticon/icons.data.svg.css", "assets/grunticon/icons.data.png.css", "assets/grunticon/icons.fallback.css" ]);
+grunticon([ "/assets/dist/grunticon/icons.data.svg.css", "/assets/dist/grunticon/icons.data.png.css", "/assets/dist/grunticon/icons.fallback.css" ]);
