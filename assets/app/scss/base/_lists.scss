@@ -14,17 +14,17 @@
 \*----------------------------------------------------------------*/
 
 ul, ol {
-    margin-left: 2em;
+    margin-left: $base*2;
     padding-left: 0;
 
     ul, ol {
-        margin-top: $baseline/2;
+        margin-top: $base/2;
         margin-bottom: 0;
     }
 }
 
 li {
-    margin-bottom: .5em;
+    margin-bottom: $base/2;
 }
 
 dt {
@@ -33,7 +33,7 @@ dt {
 
 dd {
     margin-left: 0;
-    margin-bottom: $baseline/2;
+    margin-bottom: $base/2;
     font-style: italic;
 }
 

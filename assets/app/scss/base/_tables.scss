@@ -18,7 +18,7 @@ table {
 }
 
 td, th, caption {
-    padding: .5em;
+    padding: $base/2;
     border: 1px solid darken($color-bg, 10%);
     vertical-align: top;
 }

@@ -14,8 +14,8 @@
 /* $. Box Model
 \*----------------------------------------------------------------*/
 
-.push--top { margin-top: $baseline !important; }
-.push--bottom { margin-bottom: $baseline !important; }
+.push--top { margin-top: $base !important; }
+.push--bottom { margin-bottom: $base !important; }
 .zero--top { margin-top: 0 !important; }
 .zero--bottom { margin-bottom: 0 !important; }
 .block { display: block; }

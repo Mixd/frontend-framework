@@ -23,7 +23,7 @@
 
 .media {
     @extend .cf;
-    margin-bottom: $baseline;
+    margin-bottom: $base;
 }
 
 .media__body {
@@ -37,12 +37,12 @@
 }
 
 .media__img {
-    margin-bottom: $baseline;
+    margin-bottom: $base;
 
     @include respond-min($bp2) {
         float: left;
         margin-bottom: 0;
-        margin-right: $baseline*2;
+        margin-right: $base*2;
     }
 }
 
@@ -55,7 +55,7 @@
     .media__img {
         @include respond-min($bp2) {
             float: right;
-            margin-left: $baseline*2;
+            margin-left: $base*2;
             margin-right: 0;
         }
     }

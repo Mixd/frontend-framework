@@ -66,8 +66,8 @@ blockquote {
     font-style: italic;
 
     @include respond-min($bp2) {
-        padding-left: 2em;
-        padding-right: 2em;
+        padding-left: $base*2;
+        padding-right: $base*2;
     }
 
     p {

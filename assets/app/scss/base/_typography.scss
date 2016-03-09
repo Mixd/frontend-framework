@@ -13,7 +13,7 @@
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
-    margin-bottom: $baseline;
+    margin-bottom: $base;
     line-height: 1.2;
 }
 
@@ -22,7 +22,7 @@ blockquote, pre, p, ul, ol, dl, hr {
 }
 
 p, ul, ol, dl, hr, form, table, blockquote, pre {
-    margin-bottom: $baseline;
+    margin-bottom: $base;
 }
 
 ul > :last-child,
