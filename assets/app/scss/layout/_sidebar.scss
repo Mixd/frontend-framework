@@ -1,0 +1,33 @@
+/**
+ * Title:
+ *    Sidebar
+ * Description:
+ *    Used to display the Sidebar's styling on pages or posts
+ *    which have one.
+ * Sections:
+ *    $. Base
+ */
+
+
+
+/* $. Base
+\*----------------------------------------------------------------*/
+
+.sidebar {
+}
+
+
+
+/* $. Elements
+\*----------------------------------------------------------------*/
+
+.sidebar__section {
+    @extend .panel;
+    @extend .panel--grey;
+}
+
+.sidebar__heading {
+}
+
+.sidebar__list {
+}

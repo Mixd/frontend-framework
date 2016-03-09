@@ -19,21 +19,21 @@ table {
 
 td, th, caption {
     padding: $base/2;
-    border: 1px solid darken($color-bg, 10%);
+    border: 1px solid darken($color-background, 10%);
     vertical-align: top;
 }
 
 tr:nth-child(odd) td {
-    background: darken($color-bg, 5%);
+    background: darken($color-background, 5%);
 }
 
 th, caption {
     font-weight: bold;
-    background: darken($color-bg, 10%);
+    background: darken($color-background, 10%);
 }
 
 caption {
-    background: darken($color-bg, 12.5%);
+    background: darken($color-background, 12.5%);
 }
 
 
@@ -42,5 +42,5 @@ caption {
 \*----------------------------------------------------------------*/
 
 .table--hovered tr:hover td {
-    background: darken($color-bg, 7.5%);
+    background: darken($color-background, 7.5%);
 }

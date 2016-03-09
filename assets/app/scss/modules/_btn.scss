@@ -15,7 +15,6 @@
 \*----------------------------------------------------------------*/
 
 %btn {
-    @include curve();
     display: inline-block;
     padding: ($base/2) $base;
     border: 0;

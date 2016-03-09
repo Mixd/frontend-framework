@@ -1,0 +1,31 @@
+/**
+ * Title:
+ *    Footer
+ * Description:
+ *    Used to define the sites main footer at the bottom of the page.
+ *    Don't use this as a place to put generic <footer> tags.
+ * Sections:
+ *    $. Footer
+ *    $. Copyright
+ */
+
+
+
+/* $. Footer
+\*----------------------------------------------------------------*/
+
+.footer {
+    @extend %cf;
+}
+
+.footer__logo {
+}
+
+
+
+/* $. Copyright
+\*----------------------------------------------------------------*/
+
+.copyright {
+    @extend %cf;
+}

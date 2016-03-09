@@ -21,7 +21,7 @@
 }
 
 html {
-    font-family: $font-sans;
+    font-family: $font;
     line-height: 1.5;
     font-size: 100%; // 16px
     overflow-y: scroll;
@@ -34,8 +34,9 @@ html {
 
 body {
     color: $color-text;
-    background-color: $color-bg;
+    background-color: $color-background;
 }
+
 
 
 /* $. Selections
@@ -59,5 +60,5 @@ a:link {
 
 :focus {
     outline: 0;
-    box-shadow: 0 0 1px darken($color-bg, 10%);
+    box-shadow: 0 0 1px darken($color-background, 10%);
 }

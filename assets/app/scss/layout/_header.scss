@@ -1,0 +1,65 @@
+/**
+ * Title:
+ *    Header
+ * Description:
+ *    Header layout module, used to define the header at the top of each page.
+ *    This could be used in combination with other components to create a
+ *    fully-fledged design.
+ * Sections:
+ *    $. Base
+ *    $. Logo
+ *    $. Nav
+ *    $. Toggle
+ *    $. Search
+ */
+
+
+
+/* $. Base
+\*----------------------------------------------------------------*/
+
+.header {
+    @extend %cf;
+    position: relative;
+}
+
+
+/* $. Logo
+\*----------------------------------------------------------------*/
+
+.header__logo {
+}
+
+
+/* $. Nav
+\*----------------------------------------------------------------*/
+
+.header__nav {
+    .is-active-nav & {
+    }
+}
+
+
+
+/* $. Toggle
+\*----------------------------------------------------------------*/
+
+.header__toggle {
+    @include respond-min($bp3) {
+    }
+}
+
+.is-active-nav .header__toggle--nav,
+.is-active-search .header__toggle--search {
+}
+
+
+
+
+/* $. Search
+\*----------------------------------------------------------------*/
+
+.header__search {
+    .is-active-search & {
+    }
+}

@@ -17,7 +17,7 @@
 
 hr {
     border: 0;
-    border-top: 1px solid darken($color-bg, 10%);
+    border-top: 1px solid darken($color-background, 10%);
 }
 
 ins {
@@ -46,10 +46,10 @@ address {
 
 a {
     text-decoration: none;
-    color: $color-brand;
+    color: $color-link;
 
     &:hover {
-        color: darken($color-brand, 10%);
+        color: darken($color-link, 10%);
     }
 }
 
@@ -67,7 +67,6 @@ blockquote {
     clear: both;
     margin-left: 0;
     margin-right: 0;
-    font-family: $font-serif;
     font-style: italic;
 
     @include respond-min($bp2) {
