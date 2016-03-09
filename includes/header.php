@@ -18,7 +18,7 @@
     <!--<![endif]-->
 
     <!--[if lte IE 8]>
-        <link rel="stylesheet" href="assets/css/ie.css" media="screen">
+        <link rel="stylesheet" href="/assets/dist/css/ie.css" media="screen">
     <![endif]-->
 
     <noscript><link href="/assets/dist/grunticon/icons.fallback.css" rel="stylesheet"></noscript>
