@@ -15,8 +15,8 @@
     <h6>Heading Level 6</h6>
 
     <p class="breadcrumbs">
-        <a href="#">Home</a> &gt; 
-        <a href="#">About</a> &gt; 
+        <a href="#">Home</a> &gt;
+        <a href="#">About</a> &gt;
         <span>Our Team</span>
     </p>
 
@@ -115,10 +115,10 @@
     </blockquote>
 
 <pre><code>
-#header h1 a { 
-    display: block; 
-    width: 300px; 
-    height: 80px; 
+#header h1 a {
+    display: block;
+    width: 300px;
+    height: 80px;
 }
 </code></pre>
 
