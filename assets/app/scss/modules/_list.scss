@@ -1,0 +1,50 @@
+/**
+ * Title:
+ *    List variations
+ * Description:
+ *    Styling for different types of lists throughout the site.
+ * Sections:
+ *    $. Resets
+ *    $. Components
+ */
+
+
+
+/* $. Reset
+\*----------------------------------------------------------------*/
+
+%list--unset,
+.list--unset {
+    list-style: none;
+    margin: 0;
+
+    ul, ol {
+        list-style: none;
+        margin: 0;
+    }
+}
+
+%list--inline,
+.list--inline {
+    li, dt, dd {
+        display: inline-block;
+        margin: 0 $base/4;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+
+    dt, dd {
+        font-style: normal;
+    }
+}
+
+
+
+/* $. Components
+\*----------------------------------------------------------------*/
