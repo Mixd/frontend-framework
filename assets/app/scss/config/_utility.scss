@@ -1,0 +1,90 @@
+/**
+ * Title:
+ *    Overrides
+ * Description:
+ *    Global overrides to be used throughout a project. Using !important as
+ *    we always want them to override existing styles.
+ * Sections:
+ *    $. Box Model
+ *    $. Positioning
+ *    $. Type Styling
+ */
+
+
+
+/* $. Box Model
+\*----------------------------------------------------------------*/
+
+.u-zero-top { margin-top: 0; }
+.u-zero-bottom { margin-bottom: 0; }
+
+.u-push-top { margin-top: $base; }
+.u-push-top\@2 { margin-top: $base*2; }
+.u-push-top\/2 { margin-top: $base/2; }
+
+.u-push-bottom { margin-bottom: $base; }
+.u-push-bottom\@2 { margin-bottom: $base*2; }
+.u-push-bottom\/2 { margin-bottom: $base/2; }
+
+.u-display-block { display: block; }
+.u-display-inline { display: inline-block; }
+.u-display-none { display: none; }
+
+.u-vertical-top { vertical-align: top; }
+.u-vertical-middle { vertical-align: middle; }
+
+
+
+/* $. Positioning
+\*----------------------------------------------------------------*/
+
+/* Alignment */
+.u-align-left { text-align: left; }
+.u-align-center { text-align: center; }
+.u-align-right { text-align: right; }
+
+/* Floats */
+.u-float-none { float: none; }
+.u-float-left { float: left; }
+.u-float-right { float: right; }
+
+/* Size specific */
+
+.u-float-right-bp4 {
+    @include respond-min($bp4) {
+        float: right;
+    }
+}
+
+
+
+/* $. Type Styling
+\*----------------------------------------------------------------*/
+
+/* Families */
+.u-family { font-family: $font; }
+
+/* Sizing */
+.u-size-small { font-size: .8rem; }
+.u-size-large { font-size: 1.3rem; }
+
+/* Weight */
+.u-weight-normal { font-family: $font; font-family: $weight-normal; }
+.u-weight-italics { font-family: $font; font-family: $weight-italics; font-style: normal; }
+.u-weight-bold { font-family: $font; font-family: $weight-bold; }
+
+/* Style */
+.u-style-italic { font-style: italic; }
+.u-style-uppercase { text-transform: uppercase; }
+.u-style-underline { text-decoration: underline; }
+
+
+
+/* $. Styling
+\*----------------------------------------------------------------*/
+
+/* Borders */
+.u-rounded { border-radius: 100%; }
+.u-curved { border-radius: $base; }
+.u-bordered { border: ($base/2) solid $white; }
+
