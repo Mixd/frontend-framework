@@ -74,13 +74,11 @@ module.exports = function( grunt ) {
         // Fallback for rem's
         pixrem: {
             options: {
-                rootvalue: '1em'
+                rootvalue: '16px'
             },
             dist: {
-                files: {
-                    '<%= dirs.assets %>/css/styles.css': ['<%= dirs.assets %>/css/styles.css'],
-                    '<%= dirs.assets %>/css/ie.css': ['<%= dirs.assets %>/css/ie.css']
-                }
+                src: '<%= dirs.assets %>/css/ie.css',
+                dest: '<%= dirs.assets %>/css/ie.css'
             }
         },
 
@@ -170,7 +168,7 @@ module.exports = function( grunt ) {
             },
             css: {
                 files: '<%= dirs.assets %>/scss/**/*.scss',
-                tasks: [ 'sass:dist', 'pixrem:dist', 'postcss:dist', 'notify:sass' ],
+                tasks: [ 'sass:dist', 'pixrem:dev', 'postcss:dist', 'notify:sass' ],
                 options: {
                     livereload: true
                 }

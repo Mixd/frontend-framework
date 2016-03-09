@@ -14,8 +14,8 @@
 /* $. Your Scripts - To go within the SIAF (Self invoking annonymous function)
 \*----------------------------------------------------------------*/
 
-(function() {
+(function($) {
 
-    // Start your scripts here (without jQuery)
+    // Start your scripts here
 
-})();
+})(jquery);
