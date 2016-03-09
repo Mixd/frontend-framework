@@ -40,9 +40,11 @@
 /* $. Modules - Global objects i.e. .btn, .island, etc
 \*----------------------------------------------------------------*/
 
-@import "modules/btn";
+@import "modules/icons";
 @import "modules/media";
-@import "modules/island";
+@import "modules/list";
+@import "modules/btn";
+@import "modules/panel";
 
 
 
@@ -52,6 +54,7 @@
 @import "interface/section";
 @import "interface/nav";
 @import "interface/breadcrumb";
+@import "interface/pagination";
 
 
 
