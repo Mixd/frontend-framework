@@ -1,0 +1,51 @@
+/**
+ * Title:
+ *    Icon Module
+ * Description:
+ *    Responsible for all sizes and styling of Grunticon based icons
+ * Sections:
+ *    $. Setup
+ *    $. Base
+ *    $. Variations
+ *
+ * TODO:
+ *    - Change .svg sizes based on this file for better IE8 support
+ */
+
+
+
+/* $. Setup
+\*----------------------------------------------------------------*/
+
+@mixin icon-size( $size ) {
+    width: $size;
+    height: $size;
+}
+
+
+/* $. Base
+\*----------------------------------------------------------------*/
+
+.icon {
+    @include icon-size($icon);
+    display: inline-block;
+    background-size: contain;
+}
+
+
+
+/* $. Variations
+\*----------------------------------------------------------------*/
+
+/* Generic sizing */
+.icon--small { @include icon-size($icon-small); }
+.icon--medium { @include icon-size($icon-medium); }
+.icon--large { @include icon-size($icon-large); }
+.icon--xlarge { @include icon-size($icon-xlarge); }
+
+/* Styling */
+.icon--transparent { opacity: .3; filter: alpha(opacity=30); }
+
+/* Logos */
+.icon--logo {
+}
