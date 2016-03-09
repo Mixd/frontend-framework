@@ -170,7 +170,7 @@ module.exports = function( grunt ) {
             },
             css: {
                 files: '<%= dirs.assets_input %>/scss/**/*.scss',
-                tasks: [ 'sass:dist', 'pixrem:dev', 'postcss:dist', 'notify:sass' ],
+                tasks: [ 'sass:dist', 'pixrem', 'postcss:dist', 'notify:sass' ],
                 options: {
                     livereload: true
                 }
@@ -206,7 +206,7 @@ module.exports = function( grunt ) {
             'grunticon',
             'imageoptim',
             'sass:dist',
-            'pixrem:dist',
+            'pixrem',
             'postcss',
             'uglify'
         ]

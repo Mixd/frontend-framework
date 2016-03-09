@@ -18,4 +18,4 @@
 
     // Start your scripts here
 
-})(jquery);
+})(jQuery);
