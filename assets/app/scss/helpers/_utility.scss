@@ -49,7 +49,6 @@
 .u-float-right { float: right; }
 
 /* Size specific */
-
 .u-float-right-bp4 {
     @include respond-min($bp4) {
         float: right;
@@ -69,9 +68,9 @@
 .u-size-large { font-size: 1.3rem; }
 
 /* Weight */
-.u-weight-normal { font-family: $font; font-family: $weight-normal; }
-.u-weight-italics { font-family: $font; font-family: $weight-italics; font-style: normal; }
-.u-weight-bold { font-family: $font; font-family: $weight-bold; }
+.u-weight-normal { font-weight: $weight-normal; }
+.u-weight-italics { font-style: italics; }
+.u-weight-bold { font-weight: $weight-bold; }
 
 /* Style */
 .u-style-italic { font-style: italic; }
