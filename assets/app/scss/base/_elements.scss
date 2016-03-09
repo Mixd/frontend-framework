@@ -53,6 +53,11 @@ a {
     }
 }
 
+a[href^="tel"] {
+    color: inherit;
+    text-decoration: none;
+}
+
 
 
 /* $. Blockquotes
