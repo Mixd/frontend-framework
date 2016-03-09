@@ -5,7 +5,9 @@
  *    Any other helpers which will be used throughout the project
  * Sections:
  *    $. Clearfix
- *    $. Visually Hidden
+ *    $. Flexible
+ *    $. States
+ *    $. Breakpoint Visibility
  */
 
 
@@ -18,16 +20,46 @@
     &:after {
         content: "";
         display: table;
-        clear : both;
+        clear: both;
     }
 }
 
 
 
-/* $. Visually Hidden 
+/* $. Flexible
 \*----------------------------------------------------------------*/
 
-.hidden {
+.flexible {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+
+    @include respond-min($bp2) {
+        height: 300px;
+    }
+
+    @include respond-min($bp3) {
+        height: 400px;
+    }
+
+    iframe,
+    object,
+    embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+
+
+/* $. States
+\*----------------------------------------------------------------*/
+
+/* Visually Hidden */
+.is-hidden {
     border: 0 !important;
     clip: rect(0 0 0 0) !important;
     height: 1px !important;
@@ -36,4 +68,42 @@
     padding: 0 !important;
     position: absolute !important;
     width: 1px !important;
+}
+
+.is-current,
+.is-current a {
+    color: $color-text;
+}
+
+
+
+/* $. Breakpoint Visibility
+\*----------------------------------------------------------------*/
+
+.is-visible--bp2 {
+    display: none;
+
+    @include respond-min($bp2) {
+        display: block;
+    }
+}
+
+.is-visible--bp4 {
+    display: none;
+
+    @include respond-min($bp4) {
+        display: block;
+    }
+}
+
+.is-hidden--bp2 {
+    @include respond-max($bp2) {
+        display: none;
+    }
+}
+
+.is-hidden--bp3 {
+    @include respond-max($bp3) {
+        display: none;
+    }
 }
