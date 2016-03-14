@@ -100,6 +100,7 @@ module.exports = function( grunt ) {
                 expand: true,
                 flatten: true,
                 src: '<%= dirs.assets %>/css/*.css',
+                dest: '<%= dirs.assets %>/css/'
             }
         },
 
