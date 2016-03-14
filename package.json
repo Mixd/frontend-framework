@@ -3,6 +3,7 @@
   "version": "1.4.0",
   "devDependencies": {
     "autoprefixer": "~6.3.3",
+    "groot-sass": "0.0.7",
     "grunt": "~0.4.5",
     "grunt-contrib-uglify": "~1.0.0",
     "grunt-contrib-watch": "~0.6.1",
@@ -13,8 +14,8 @@
     "grunt-postcss": "~0.8.0",
     "grunt-sass": "~1.1.0",
     "grunt-svgmin": "~3.1.2",
-    "quiet-grunt": "~0.2.3",
+    "jquery": "~1.12.1",
     "normalize-scss": "~4.0.3",
-    "jquery": "~1.12.1"
+    "quiet-grunt": "~0.2.3"
   }
 }
