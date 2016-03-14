@@ -90,7 +90,8 @@ module.exports = function( grunt ) {
                 processors: [
                     require('autoprefixer')({
                         browsers: [ 'last 2 versions', 'ie 8', 'ie 9', 'Firefox ESR', 'Opera 12.1' ],
-                        remove: false
+                        remove: false,
+                        cascade: false,
                     })
                 ],
                 map: true
@@ -98,11 +99,7 @@ module.exports = function( grunt ) {
             dist: {
                 expand: true,
                 flatten: true,
-                src: [
-                    '<%= dirs.assets_output %>/css/styles.css',
-                    '<%= dirs.assets_output %>/css/ie.css',
-                ],
-                dest: '<%= dirs.assets_output %>/css'
+                src: '<%= dirs.assets %>/css/*.css',
             }
         },
 
