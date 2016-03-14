@@ -1,0 +1,75 @@
+/**
+ * Title:
+ *    Vendors
+ * Description:
+ *    Importing and using the bower components within your Sass
+ * Sections:
+ *    $. Variables
+ *    $. Imports
+ *    $. Configuration
+ */
+
+
+
+/* $. Variables
+\*----------------------------------------------------------------*/
+
+/**
+ * GROOT
+ */
+
+// Core
+$gr-grid: "grid";                           // Main grid container which holds all elements
+$gr-item: "grid__item";                     // Individual grid item/cell/unit/whatever you want to call it.
+$gr-item-unit: "grid__item";                // The class chained onto the same element as above which controls the sizing.
+
+// Modifiers
+$gr-grid-spaced: "grid--spaced";            // Increase gutter size
+$gr-grid-compact: "grid--compact";          // Remove all gutters
+$gr-grid-reversed: "grid--reversed";        // Reverse direction of the grid. i.e. direction: rtl;
+$gr-grid-centered: "grid--centered";        // Centers the entire Grid, which grid items will inherit.
+$gr-item-centered: "grid__item--centered";  // Center an individual item, rather than all items.
+
+// Sizing
+$gr-gutter: 1em;                            // The size between each grid item. Can use any CSS unit of measurement.
+
+// Grid Alignment
+$gr-grid-direction: inherit;                // Initial direction of the $gr-grid
+$gr-grid-align-x: inherit;                  // Initial horizontal alignment of the $gr-grid.
+
+// Item Alignment
+$gr-item-direction: inherit;                // Initial direction of the $gr-item
+$gr-item-align-x: inherit;                  // Initial horizontal alignment of the $gr-item
+$gr-item-align-y: top;                      // Initial vertical alignment of the $gr-item
+
+
+
+/* $. Imports
+\*----------------------------------------------------------------*/
+
+@import "./node_modules/node.normalize.scss/normalize";
+@import "./node_modules/groot-sass/groot";
+
+
+
+/* $. Configuration
+\*----------------------------------------------------------------*/
+
+@include groot(12);
+
+@include respond-min($bp1) {
+    @include groot(12, "bp1");
+}
+@include respond-min($bp2) {
+    @include groot(12, "bp2");
+}
+@include respond-min($bp3) {
+    @include groot(12 5, "bp3");
+}
+@include respond-min($bp4) {
+    @include groot(12 5, "bp4");
+}
+@include respond-min($bp5) {
+    @include groot(12 5, "bp5");
+}
+
