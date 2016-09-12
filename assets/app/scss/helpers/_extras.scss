@@ -79,31 +79,26 @@
 
 /* $. Breakpoint Visibility
 \*----------------------------------------------------------------*/
+@each $breakpoint in $breakpoints {
+  $key: nth($breakpoint, 1);
+  $value: nth($breakpoint, 2);
 
-.is-visible--bp2 {
+  .is-visible--#{$value} {
     display: none;
 
-    @include respond-min($bp2) {
-        display: block;
+    @include respond-min(#{$key}) {
+      display: block;
     }
+  }
 }
 
-.is-visible--bp4 {
-    display: none;
+@each $breakpoint in $breakpoints {
+  $key: nth($breakpoint, 1);
+  $value: nth($breakpoint, 2);
 
-    @include respond-min($bp4) {
-        display: block;
+  .is-hidden--#{$value} {
+    @include respond-min(#{$key}) {
+      display: none;
     }
-}
-
-.is-hidden--bp2 {
-    @include respond-max($bp2) {
-        display: none;
-    }
-}
-
-.is-hidden--bp3 {
-    @include respond-max($bp3) {
-        display: none;
-    }
+  }
 }
