@@ -52,7 +52,7 @@ module.exports = function( grunt ) {
                     ],
                     '<%= dirs.assets_output %>/js/head.min.js': [
                         '<%= dirs.modules %>/jquery/dist/jquery.js',
-                        '<%= dirs.assets_input %>/js/vendors/modernizr.js',
+                        '<%= dirs.assets_input %>/js/vendor/modernizr.js',
                         '<%= dirs.assets_input %>/js/head.js'
                     ]
                 }
@@ -99,8 +99,8 @@ module.exports = function( grunt ) {
             dist: {
                 expand: true,
                 flatten: true,
-                src: '<%= dirs.assets %>/css/*.css',
-                dest: '<%= dirs.assets %>/css/'
+                src: '<%= dirs.assets_output %>/css/*.css',
+                dest: '<%= dirs.assets_output %>/css/'
             }
         },
 
