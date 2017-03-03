@@ -18,10 +18,5 @@
     "grunt-svgmin": "~4.0.0",
     "grunt-timer": "^0.6.0",
     "jquery": "~1.12.4"
-  },
-  "browserslist": [
-    "last 2 versions",
-    "ie >= 8",
-    "Firefox ESR"
-  ]
+  }
 }
