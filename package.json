@@ -17,8 +17,7 @@
     "grunt-sass": "~2.0.0",
     "grunt-svgmin": "~4.0.0",
     "grunt-timer": "^0.6.0",
-    "jquery": "~1.12.1",
-    "normalize.css": "^5.0.0"
+    "jquery": "~1.12.4"
   },
   "browserslist": [
     "last 2 versions",
