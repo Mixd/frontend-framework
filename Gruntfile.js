@@ -99,8 +99,8 @@ module.exports = function (grunt) {
         
         sass: {
             options: {
-                sourceMap: false,
-                outputStyle: 'nested'
+                sourceMap: true,
+                outputStyle: 'compressed'
             },
             dist: {
                 files: {
@@ -109,13 +109,16 @@ module.exports = function (grunt) {
                     ],
                     '<%= dirs.assets_output %>/css/ie.css': [
                         '<%= dirs.assets_input %>/scss/ie.scss'
+                    ],
+                    '<%= dirs.assets_output %>/css/print.css': [
+                        '<%= dirs.assets_input %>/scss/print.scss'
                     ]
                 }
             }
         },
         purifycss: {
             options: {
-                whitelist: ['*test--*', '*lt-ie9*', '*grid*', '*icon*'],
+                whitelist: ['*test--*', '*lt-ie9*', '*grid*', '*icon*', '.select'],
                 minify: false
             },
             target: {
@@ -162,7 +165,6 @@ module.exports = function (grunt) {
                     sourceMap: true,
                     preserveComments: 'some',
                     screwIE8: false,
-                    beautify: true,
                     banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
                 files: {
