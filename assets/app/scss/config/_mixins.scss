@@ -5,18 +5,13 @@
  *    This is an archive for all global mixins located within the
  *    'mixins' folder
  * Sections:
- *    $. Media Queries
- *    $. Your new mixins
+ *    $. Your mixins
  */
 
 
 
-/* $. Media Queries - https://github.com/jakearchibald/sass-ie
+/* $. Mixins
 \*----------------------------------------------------------------*/
 
+@import "mixins/aspect-ratio";
 @import "mixins/media-queries";
-
-
-
-/* $. Your new mixins
-\*----------------------------------------------------------------*/

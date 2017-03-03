@@ -15,21 +15,22 @@
 \*----------------------------------------------------------------*/
 
 %btn {
+    border: 0;
     display: inline-block;
     padding: ($base/2) $base;
-    border: 0;
     transition: all .15s ease-out;
 }
 
 @mixin btn( $text, $bg, $htext: $text, $hbg: darken($bg, 10%) ) {
     color: $text;
     background: $bg;
-
+    
     &:hover,
     &:focus {
         color: $htext;
         background: $hbg;
     }
+    
 }
 
 
@@ -93,3 +94,22 @@ input[type="submit"],
     .icon--xlarge  {}
 }
 
+
+/**
+ * Reset
+ */
+%btn--reset {
+    border: 0;
+    background: none;
+    text-shadow: none;
+    box-shadow: none;
+    outline: 0;
+}
+
+/**
+ * Use this class when making js toggle buttons to aid in removing
+ * default browser styles
+ */
+.btn--reset {
+    @extend %btn--reset;
+}
