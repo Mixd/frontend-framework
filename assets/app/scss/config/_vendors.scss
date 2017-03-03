@@ -47,7 +47,6 @@ $gr-item-align-y: top;                      // Initial vertical alignment of the
 /* $. Imports
 \*----------------------------------------------------------------*/
 
-@import "./node_modules/node.normalize.scss/normalize";
 @import "./node_modules/groot-sass/groot";
 
 
@@ -73,3 +72,6 @@ $gr-item-align-y: top;                      // Initial vertical alignment of the
     @include groot(12 5, "bp5");
 }
 
+.grid__item--omega {
+    float: right;
+}

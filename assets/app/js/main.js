@@ -27,10 +27,3 @@
     }
 
 })(jQuery);
-
-
-
-/* $. Grunticon Load
-\*----------------------------------------------------------------*/
-
-grunticon([ "/assets/dist/grunticon/icons.data.svg.css", "/assets/dist/grunticon/icons.data.png.css", "/assets/dist/grunticon/icons.fallback.css" ]);

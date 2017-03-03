@@ -31,26 +31,30 @@
 
 .flexible {
     position: relative;
-    height: 250px;
+    background-color: $grey-lighter;
     overflow: hidden;
-
-    @include respond-min($bp2) {
-        height: 300px;
-    }
-
-    @include respond-min($bp3) {
-        height: 400px;
-    }
-
+    @include aspect-ratio(16, 9);
+    
     iframe,
     object,
-    embed {
+    embed,
+    div {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
     }
+}
+
+.flexible--image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.flexible--square {
+    @include aspect-ratio(1, 1);
 }
 
 

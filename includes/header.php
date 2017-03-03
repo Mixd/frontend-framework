@@ -10,10 +10,7 @@
 
     <!-- Titles/Descriptions -->
     <title>Mixd Front-end Framework</title>
-
-    <!-- Favicons -->
-    <?php include('./includes/favicons.php'); ?>
-
+    
     <!-- Styles -->
     <!--[if IE 9]><!-->
     <link rel="stylesheet" href="/assets/dist/css/styles.css">
