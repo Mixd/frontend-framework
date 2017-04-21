@@ -35,18 +35,13 @@ html {
 body {
     color: $color-text;
     background-color: $color-background;
+    -moz-osx-font-smoothing: grayscale; // fix for fonts appearing bolder in Firefox on OSX
 }
 
 
 
 /* $. Selections
 \*----------------------------------------------------------------*/
-
-::-moz-selection {
-    background: rgba(102, 102, 102, .5);
-    color: #FFF;
-    text-shadow: none;
-}
 
 ::selection {
     background: rgba(102, 102, 102, .5);

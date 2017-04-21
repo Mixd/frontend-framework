@@ -73,6 +73,9 @@ $gr-item-align-y: top;                      // Initial vertical alignment of the
     @include groot(12 5, "bp5");
 }
 
+.grid__item--omega {
+    float: right;
+}
 
 /* $. Flex extension, for equal height on modern browsers.
 \*----------------------------------------------------------------*/

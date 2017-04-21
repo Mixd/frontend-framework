@@ -56,9 +56,10 @@ $blue-light:          #28AAE1;
  */
 
 /* shades */
-$color-text:          $grey-dark;
-$color-background:    $white;
-$color-link:          $blue-light;
+$color-text: $grey-dark;
+$color-background: $white;
+$color-link: $blue-light;
+$color-link-hover: mix($blue-light, white, 50%);
 
 /* palette */
 $color-brand-blue:    $blue;

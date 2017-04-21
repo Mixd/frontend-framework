@@ -47,15 +47,14 @@ address {
 a {
     text-decoration: none;
     color: $color-link;
+    border-bottom: 1px solid mix(white, $color-link, 50%);
 
-    &:hover {
-        color: darken($color-link, 10%);
+    &:hover,
+    &:focus,
+    &:active {
+        color: $color-link-hover;
+        border-bottom-color: $color-link-hover;
     }
-}
-
-a[href^="tel"] {
-    color: inherit;
-    text-decoration: none;
 }
 
 
@@ -76,6 +75,13 @@ blockquote {
 
     p {
         font-size: 1.35em;
+    }
+
+    cite {
+        margin-top: $base*0.5;
+        display: block;
+        font-style: normal;
+        font-size: 1.11rem; // 20px
     }
 }
 

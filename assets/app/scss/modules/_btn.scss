@@ -93,3 +93,23 @@ input[type="submit"],
     .icon--xlarge  {}
 }
 
+
+
+/**
+ * Reset
+ */
+%btn--reset {
+    border: 0;
+    background: none;
+    text-shadow: none;
+    box-shadow: none;
+    outline: 0;
+}
+
+/**
+ * Use this class when making js toggle buttons to aid in removing
+ * default browser styles
+ */
+.btn--reset {
+    @extend %btn--reset;
+}

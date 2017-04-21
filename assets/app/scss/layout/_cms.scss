@@ -49,22 +49,41 @@
 \*----------------------------------------------------------------*/
 
 .alignleft {
-    float: left;
-    margin: $base $base 0 0;
+
+    @include respond-min($bp2) {
+        float: left;
+        margin: 1rem 1rem 0 0;
+    }
+
 }
 
 .alignright {
-    float: right;
-    margin: $base 0 0 $base;
-    text-align: right;
+
+    @include respond-min($bp2) {
+        float: right;
+        margin: 1rem 0 0 1rem;
+        text-align: right;
+    }
+
 }
 
 .aligncenter {
-    margin-left: auto;
-    margin-right: auto;
+
+    @include respond-min($bp2) {
+        display: block;
+        margin: 0 auto;
+    }
+
 }
 
-[class*="wp-image"] {
+.wp-caption {
+    max-width: 100%;
+}
+
+.wp-caption-text {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid $grey_light;
+    color: $grey;
 }
 
 

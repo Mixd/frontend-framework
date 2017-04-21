@@ -29,7 +29,9 @@
 .icon {
     @include icon-size($icon);
     display: inline-block;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
 }
 
 
@@ -42,9 +44,6 @@
 .icon--medium { @include icon-size($icon-medium); }
 .icon--large { @include icon-size($icon-large); }
 .icon--xlarge { @include icon-size($icon-xlarge); }
-
-/* Styling */
-.icon--transparent { opacity: .3; filter: alpha(opacity=30); }
 
 /* Logos */
 .icon--logo {

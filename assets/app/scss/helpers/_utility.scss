@@ -15,23 +15,109 @@
 /* $. Box Model
 \*----------------------------------------------------------------*/
 
-.u-zero-top        { margin-top: 0; }
-.u-zero-bottom     { margin-bottom: 0; }
+.u-zero-top {
+    margin-top: 0;
+}
 
-.u-push-top        { margin-top: $base; }
-.u-push-top\@2     { margin-top: $base*2; }
-.u-push-top\/2     { margin-top: $base/2; }
+.u-zero-bottom {
+    margin-bottom: 0;
+}
 
-.u-push-bottom     { margin-bottom: $base; }
-.u-push-bottom\@2  { margin-bottom: $base*2; }
-.u-push-bottom\/2  { margin-bottom: $base/2; }
+.u-zero-pad-top {
+    padding-top: 0;
+}
 
-.u-display-block   { display: block; }
-.u-display-inline  { display: inline-block; }
-.u-display-none    { display: none; }
+.u-zero-pad-bottom {
+    padding-top: 0;
+}
 
-.u-vertical-top    { vertical-align: top; }
-.u-vertical-middle { vertical-align: middle; }
+.u-zero-pad-left {
+    padding-left: 0;
+}
+
+.u-zero-pad-right {
+    padding-right: 0;
+}
+
+.u-push {
+    margin: $base;
+}
+
+.u-push-top {
+    margin-top: $base;
+}
+
+.u-push-top\@2 {
+    margin-top: $base*2;
+}
+
+.u-push-top\/2 {
+    margin-top: $base/2;
+}
+
+.u-push-top\/4 {
+    margin-top: $base/4;
+}
+
+.u-push-bottom {
+    margin-bottom: $base;
+}
+
+.u-push-bottom\@2 {
+    margin-bottom: $base*2;
+}
+
+.u-push-bottom\/2 {
+    margin-bottom: $base/2;
+}
+
+.u-push-bottom\/4 {
+    margin-bottom: $base/4;
+}
+
+.u-push-right {
+    margin-right: $base;
+}
+
+.u-pull-right {
+    margin-right: -$base;
+}
+
+.u-display-block {
+    display: block;
+}
+
+.u-display-inline {
+    display: inline-block;
+}
+
+.u-display-none {
+    display: none;
+}
+
+.u-vertical-top {
+    vertical-align: top;
+}
+
+.u-vertical-middle {
+    vertical-align: middle;
+}
+
+.u-pad {
+    padding: $base;
+}
+
+.u-pad\@2 {
+    padding: $base*1.5;
+}
+
+.u-pad-bottom {
+    padding-bottom: $base;
+}
+
+.u-pad-bottom\@2 {
+    padding-bottom: $base*2;
+}
 
 
 
@@ -77,6 +163,14 @@
 .u-style-uppercase { text-transform: uppercase; }
 .u-style-underline { text-decoration: underline; }
 
+/* Wrapping */
+.u-text-wrap {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    hyphens: auto;
+}
 
 
 /* $. Styling
@@ -86,4 +180,3 @@
 .u-rounded  { border-radius: 100%; }
 .u-curved   { border-radius: $base; }
 .u-bordered { border: ($base/2) solid $white; }
-
