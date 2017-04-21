@@ -73,3 +73,25 @@ $gr-item-align-y: top;                      // Initial vertical alignment of the
     @include groot(12 5, "bp5");
 }
 
+
+/* $. Flex extension, for equal height on modern browsers.
+\*----------------------------------------------------------------*/
+
+.test--flexbox {
+
+    .grid--flex {
+        display: flex;
+        flex-wrap: wrap;
+
+        .grid__item {
+            display: flex;
+
+            > * {
+                display: flex;
+                padding-bottom: $base;
+                width: 100%;
+            }
+        }
+    }
+
+}
