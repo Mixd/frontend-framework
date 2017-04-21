@@ -36,13 +36,9 @@ module.exports = function( grunt ) {
         dirs: dirs,
         local_url: local_url,
 
-        notify_hooks: {
-            options: {
-                enabled: true,
-                max_jshint_notifications: 3, // maximum number of notifications from jshint output
-                duration: 0.5 // the duration of notification in seconds, for `notify-send only
-            }
-        },
+        /**
+         * Scaffold tasks
+         */
 
         browserSync: {
             bsFiles: {
@@ -60,13 +56,36 @@ module.exports = function( grunt ) {
             }
         },
 
-        // Uglify [and Minify] Javascript
+        watch: {
+            options: {
+                spawn: false
+            },
+            scripts: {
+                files: [ '<%= dirs.assets_input %>/js/*.js' ],
+                tasks: [ 'uglify', 'notify:uglify' ]
+            },
+            css: {
+                files: '<%= dirs.assets_input %>/scss/**/*.scss',
+                tasks: [ 'sass:dist', 'pixrem', 'postcss:dist', 'notify:sass' ]
+            },
+            svg: {
+                files: '<%= dirs.assets_input %>/icons/*.svg',
+                tasks: [ 'svgmin', 'grunticon', 'sass:dist' ]
+            }
+        },
+
+        /**
+         * JavaScript
+         */
+
         uglify: {
             scripts: {
                 options: {
                     compress: true,
                     sourceMap: true,
-                    preserveComments: false,
+                    preserveComments: 'some',
+                    screwIE8: false,
+                    banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
                 },
                 files: {
                     '<%= dirs.assets_output %>/js/main.min.js': [
@@ -83,7 +102,10 @@ module.exports = function( grunt ) {
             }
         },
 
-        // Compile Sass
+        /**
+         * Sass
+         */
+
         sass: {
             options: {
                 sourceMap: true,
@@ -135,7 +157,10 @@ module.exports = function( grunt ) {
             }
         },
 
-        // Optimise Images
+        /**
+         * Image optimisation
+         */
+
         imageoptim: {
             src: '<%= dirs.assets_output %>/img',
             options: {
@@ -143,7 +168,10 @@ module.exports = function( grunt ) {
             }
         },
 
-        // Minify .svg files
+        /**
+         * SVGs
+         */
+
         svgmin: {
             options: {
                 plugins:[
@@ -187,22 +215,16 @@ module.exports = function( grunt ) {
             }
         },
 
-        // Watch Task
-        watch: {
+
+        /**
+         * Notify
+         */
+
+        notify_hooks: {
             options: {
-                spawn: false
-            },
-            scripts: {
-                files: [ '<%= dirs.assets_input %>/js/*.js' ],
-                tasks: [ 'uglify', 'notify:uglify' ]
-            },
-            css: {
-                files: '<%= dirs.assets_input %>/scss/**/*.scss',
-                tasks: [ 'sass:dist', 'pixrem', 'postcss:dist', 'notify:sass' ]
-            },
-            svg: {
-                files: '<%= dirs.assets_input %>/icons/*.svg',
-                tasks: [ 'svgmin', 'grunticon', 'sass:dist' ]
+                enabled: true,
+                max_jshint_notifications: 3, // maximum number of notifications from jshint output
+                duration: 0.5 // the duration of notification in seconds, for `notify-send only
             }
         },
 
