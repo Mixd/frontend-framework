@@ -1,0 +1,116 @@
+/**
+ * Title:
+ *    Print Stylesheet
+ * Description:
+ *    Use to override print based styles
+ */
+
+/* $. Config - Variables, global mixins & Bower components
+\*----------------------------------------------------------------*/
+@charset "UTF-8";
+@import "config/vars";
+@import "config/mixins";
+@import "config/vendors";
+@import "helpers/extras";
+@import "base/defaults";
+@import "base/elements";
+@import "base/typography";
+@import "base/lists";
+@import "base/forms";
+@import "base/tables";
+
+/* Print Styles */
+
+// Prefer black & white
+@media print and (color) {
+    
+    * {
+        print-color-adjust: economy;
+    }
+}
+
+@media print {
+    
+    @page {
+        size: A4;
+    }
+    
+    * {
+        background: none !important;
+        page-break-before: avoid;
+        page-break-after: avoid;
+    }
+    
+    html {
+        font-family: sans-serif;
+        background: white;
+        color: #252525;
+        font-size: 12pt;
+    }
+    
+    // Set size to A4
+    html, body {
+        width: 210mm;
+        height: 297mm;
+    }
+    
+    // Forcefully expand all anchors
+    a[href^=http]:after {
+        content: " <" attr(href) "> ";
+    }
+    
+    // Except for our faux buttons
+    a[href^="#"]:after {
+        content: "";
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+        color: $black;
+    }
+    
+    blockquote {
+        background: none;
+        margin: $base 0;
+        padding: $base;
+    }
+    
+    a {
+        padding: 0;
+        margin: 0;
+    }
+    
+    ul {
+        page-break-inside: avoid;
+    }
+    
+    // Layout reset
+    div[class^="grid"],
+    .container {
+        min-width: unset !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 0;
+    }
+    
+    // Layout spacing
+    header,
+    section,
+    aside,
+    article,
+    div,
+    article {
+        float: none;
+        margin: $base 0 !important;
+    }
+    
+    // Hidden elements
+    *:empty {
+        display: none;
+    }
+    
+}
