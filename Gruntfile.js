@@ -20,7 +20,6 @@ module.exports = function( grunt ) {
     var dirs = {
         assets_input: 'assets/app',
         assets_output: 'assets/dist',
-        components: 'components',
         modules: 'node_modules'
     }
 
@@ -106,8 +105,8 @@ module.exports = function( grunt ) {
             dist: {
                 expand: true,
                 flatten: true,
-                src: '<%= dirs.assets %>/css/*.css',
-                dest: '<%= dirs.assets %>/css/'
+                src: '<%= dirs.assets_output %>/css/*.css',
+                dest: '<%= dirs.assets_output %>/css/'
             }
         },
 
