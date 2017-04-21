@@ -95,7 +95,7 @@ module.exports = function( grunt ) {
             options: {
                 processors: [
                     require('autoprefixer')({
-                        browsers: [ 'last 2 versions', 'ie 8', 'ie 9', 'Firefox ESR', 'Opera 12.1' ],
+                        browsers: [ 'last 2 versions', 'ie >= 8', 'Firefox ESR', 'iOS >= 7' ],
                         remove: false,
                         cascade: false,
                     })
