@@ -1,5 +1,5 @@
 {
-  "name": "Mixd-Frontend-Framework",
+  "name": "mixd-frontend-framework",
   "version": "1.4.0",
   "devDependencies": {
     "autoprefixer": "~6.3.3",
