@@ -29,7 +29,7 @@ module.exports = function( grunt ) {
      *
      * @type {string}
      */
-    var local_url = "frontend-framework.dev";
+    var local_url = 'frontend-framework.dev';
 
     grunt.initConfig({
         pkg: grunt.file.readJSON( 'package.json' ),
@@ -50,9 +50,14 @@ module.exports = function( grunt ) {
             },
             options: {
                 watchTask: true,
-                proxy: "<%= local_url %>",
-                ghostMode: false,
-                online: false
+                proxy: '<%= local_url %>',
+                host: '<%= local_url %>',
+                open: 'external',
+                ghostMode: {
+                    clicks: true,
+                    forms: true,
+                    scroll: false
+                }
             }
         },
 
