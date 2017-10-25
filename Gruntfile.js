@@ -29,7 +29,7 @@ module.exports = function( grunt ) {
      *
      * @type {string}
      */
-    var local_url = 'chomp-static.dev';
+    var local_url = 'frontend-framework.dev';
 
     grunt.initConfig({
         pkg: grunt.file.readJSON( 'package.json' ),

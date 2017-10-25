@@ -15,9 +15,9 @@ The Mixd Frontend Framework...
 
 Need more information? Take a look at the following Wiki pages:
 
-- [**Changelog**](https://github.com/mixd/chomp-static/wiki/Changelog) - Latest and past changes to the Framework
-- [**Installation**](https://github.com/mixd/chomp-static/wiki/Installation) - Quick Installation guide
-- [**Usage**](https://github.com/mixd/chomp-static/wiki/Usage) - How to use the framework
+[**Changelog**](https://github.com/mixd/frontend-framework/wiki/Changelog) - Latest and past changes to the Framework
+[**Installation**](https://github.com/mixd/frontend-framework/wiki/Installation) - Quick Installation guide
+[**Usage**](https://github.com/mixd/frontend-framework/wiki/Usage) - How to use the framework
 
 ## Credits
 
